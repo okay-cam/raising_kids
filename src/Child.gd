@@ -14,8 +14,11 @@ var age := BABY
 # STATES
 enum {
 	DEAD = 0,
-	
+	WALK,
+	REQUEST
 }
+var state := WALK
+
 
 # ITEMS
 enum {
@@ -52,7 +55,7 @@ const NORMAL_SPEED := 4.0
 # speed when hit
 const HIT_SPEED := 25.0
 # go to fast speed after eating an item (!! for just babies?)
-const ZOOMIES_SPEED := 16.0
+const ZOOMIES_SPEED := 10.0
 const LERP_SPEED := 0.05
 
 func _ready():
@@ -84,6 +87,17 @@ func _physics_process(delta):
 		direction = direction.bounce(collision.normal)
 #		# some random rotation
 #		direction = direction.rotated( rand_range( -PI / 0.2 , PI / 0.2 ))
+	
+	
+	# face left when moving left
+	if state == WALK:
+		walk_animation()
+		$Sprite.flip_h = direction.x < 0
+	else:
+		request_animation()
+		$Sprite.flip_h = false
+	
+	
 
 
 func _on_ZoomiesCooldown_timeout():
@@ -132,6 +146,8 @@ func refresh_request_bag():
 
 # give child a request
 func generate_request():
+	state = REQUEST
+	
 	# choose from request bag
 	current_request = request_bag.pop_at(randi() % len(request_bag))
 	
@@ -142,13 +158,14 @@ func generate_request():
 	# change sprite animation to requesting
 	request_animation()
 
+
 func request_animation():
 	$Sprite.animation = str(age) + "Request"
-
 func walk_animation():
 	$Sprite.animation = str(age) + "Walk"
 
 func remove_request():
+	state = WALK
 	$RequestIcon.hide()
 	$StartRequest.stop()
 
