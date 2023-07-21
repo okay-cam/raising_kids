@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/food_icon.png-de6f212b32bcc860d7d1e181e4b62911.stex"
+path="res://.import/food_icon.png-63ad0572e6c334f81225a310fbe04c49.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food_icon.png"
-dest_files=[ "res://.import/food_icon.png-de6f212b32bcc860d7d1e181e4b62911.stex" ]
+source_file="res://assets/placeholder/food_icon.png"
+dest_files=[ "res://.import/food_icon.png-63ad0572e6c334f81225a310fbe04c49.stex" ]
 
 [params]
 

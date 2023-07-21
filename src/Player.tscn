@@ -1,29 +1,50 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/placeholder/food_icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/placeholder/water_icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/placeholder/nothing.png" type="Texture" id=4]
+[ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 50.4381
+radius = 67.0
 
-[node name="Player" type="KinematicBody2D"]
-collision_mask = 0
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "Items",
+"speed": 0.0
+} ]
+
+[node name="Player" type="KinematicBody2D" groups=["Reset"]]
+collision_mask = 2
 script = ExtResource( 1 )
+BulletResource = ExtResource( 5 )
 
 [node name="PlayerPolygon" type="Polygon2D" parent="."]
-polygon = PoolVector2Array( -28, -64, 28, -64, 0, 0 )
+polygon = PoolVector2Array( -28, -64, -1, -81, 28, -64, 9, 0, -9, 0 )
 
 [node name="MovementCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -8 )
+position = Vector2( 0, -9 )
 shape = SubResource( 1 )
 
 [node name="PickupArea" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 0
+collision_mask = 4
 
 [node name="PickupCollision" type="CollisionShape2D" parent="PickupArea"]
-position = Vector2( 0, -13 )
+position = Vector2( 0, -9 )
 shape = SubResource( 2 )
 
-[node name="Icon" type="Sprite" parent="."]
+[node name="HoldIcon" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 0, -104 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 3 )
+animation = "Items"
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
+[connection signal="body_exited" from="PickupArea" to="." method="_on_PickupArea_body_exited"]

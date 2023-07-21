@@ -3,13 +3,13 @@ extends StaticBody2D
 
 
 
-export var item_type := 0
+export var item := 0
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Sprite.frame = item
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
