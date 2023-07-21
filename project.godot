@@ -65,9 +65,10 @@ pickup={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_2="Wall"
-2d_physics/layer_3="ItemBox"
+2d_physics/layer_3="ItemBoxArea"
 2d_physics/layer_4="Item"
 2d_physics/layer_5="Child"
+2d_physics/layer_6="ChildItemArea"
 
 [rendering]
 

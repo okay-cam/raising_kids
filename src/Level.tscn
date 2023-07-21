@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/PlaceholderWall.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Child.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Node2D"]
 z_as_relative = false
@@ -19,17 +20,20 @@ current = true
 
 [node name="ItemBox" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 113.413, 405.325 )
+item = 1
 
 [node name="ItemBox2" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 606, 258 )
-item = 1
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 219, 703 )
 z_as_relative = false
-polygon = PoolVector2Array( -59, -31, 570, -51, 906.802, -57.5896, 947, -596, 1094, -585, 1040, 26, 458, 29, 64, 42, -66, 35 )
+polygon = PoolVector2Array( -456, -86, 570, -51, 906.802, -57.5896, 918, -749, 1094, -585, 1040, 26, 458, 29, 64, 42, -66, 35 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
 position = Vector2( 400, -104 )
 z_as_relative = false
-polygon = PoolVector2Array( -651, 654, -719, -93, 576, -93, 545, 55, -568.595, 37.1253, -494, 641 )
+polygon = PoolVector2Array( -651, 654, -719, -93, 576, -93, 829, 153, -568.595, 37.1253, -480, 765 )
+
+[node name="Child" parent="." instance=ExtResource( 4 )]
+position = Vector2( 345, 242 )

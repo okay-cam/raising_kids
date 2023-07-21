@@ -1,0 +1,13 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=2]
+
+[ext_resource path="res://assets/placeholder/food_icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/placeholder/nothing.png" type="Texture" id=2]
+[ext_resource path="res://assets/placeholder/water_icon.png" type="Texture" id=3]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": false,
+"name": "Items",
+"speed": 0.0
+} ]

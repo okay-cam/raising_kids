@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/placeholder/baby_happy.png" type="Texture" id=1]
+[ext_resource path="res://assets/placeholder/baby_sad.png" type="Texture" id=2]
+[ext_resource path="res://src/Child.gd" type="Script" id=3]
+[ext_resource path="res://src/ItemFrames.tres" type="SpriteFrames" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "1Request",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "1Walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.5153
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 41.0488
+
+[node name="Child" type="KinematicBody2D" groups=["Child", "Reset"]]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource( 3 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "1Walk"
+
+[node name="MoveCollision" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="ItemArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="ItemCollision" type="CollisionShape2D" parent="ItemArea"]
+shape = SubResource( 3 )
+
+[node name="RequestIcon" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -56 )
+scale = Vector2( 0.5, 0.5 )
+frames = ExtResource( 4 )
+animation = "Items"
+
+[node name="StartRequest" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="ZoomiesCooldown" type="Timer" parent="."]
+wait_time = 2.5
+one_shot = true
+
+[connection signal="body_entered" from="ItemArea" to="." method="_on_ItemArea_body_entered"]
+[connection signal="timeout" from="StartRequest" to="." method="_on_StartRequest_timeout"]
+[connection signal="timeout" from="ZoomiesCooldown" to="." method="_on_ZoomiesCooldown_timeout"]
