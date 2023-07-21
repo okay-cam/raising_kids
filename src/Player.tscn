@@ -19,7 +19,7 @@ animations = [ {
 "speed": 0.0
 } ]
 
-[node name="Player" type="KinematicBody2D" groups=["Reset"]]
+[node name="Player" type="KinematicBody2D" groups=["Player", "Reset"]]
 collision_mask = 2
 script = ExtResource( 1 )
 BulletResource = ExtResource( 5 )

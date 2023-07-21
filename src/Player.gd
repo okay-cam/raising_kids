@@ -9,7 +9,7 @@ var item_held := 0
 var item_in_range := 0
 
 # initial velocity added to player on shoot
-const BULLET_KNOCKBACK = 200
+const BULLET_KNOCKBACK = 600
 # velocity added onto current movement velocity
 var knockback_velocity := Vector2.ZERO
 const KNOCKBACK_DECEL_LERP := 0.2
@@ -64,7 +64,7 @@ func shoot():
 	
 	# add bullet
 	var bullet = BulletResource.instance()
-	bullet.init(position, mouse_angle)
+	bullet.init(item_held, position, mouse_angle)
 	get_parent().add_child(bullet)
 	
 	# knockback player in opposite direction as shot
@@ -81,7 +81,9 @@ func shoot():
 func _on_PickupArea_body_entered(body):
 	if body.is_in_group("ItemBox"):
 		item_in_range = body.item
+		body.highlight()
 
 func _on_PickupArea_body_exited(body):
 	if body.is_in_group("ItemBox"):
 		item_in_range = 0
+		body.unhighlight()

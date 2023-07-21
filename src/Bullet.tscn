@@ -1,22 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/placeholder/food_icon.png" type="Texture" id=1]
 [ext_resource path="res://assets/placeholder/nothing.png" type="Texture" id=2]
 [ext_resource path="res://src/Bullet.gd" type="Script" id=3]
+[ext_resource path="res://assets/placeholder/water_icon.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ) ],
-"loop": true,
+"frames": [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": false,
 "name": "Items",
-"speed": 5.0
+"speed": 0.0
 } ]
 
-[node name="Bullet" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=2]
+radius = 23.3452
+
+[node name="Bullet" type="KinematicBody2D" groups=["Reset"]]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "Items"
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Delete" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Delete" to="." method="_on_Delete_timeout"]

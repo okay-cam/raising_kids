@@ -1,17 +1,18 @@
 extends StaticBody2D
 
 
+const HIGHLIGHT_AMOUNT = 1.8
+
+export var item := 2
 
 
-export var item := 0
-
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite.frame = item
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+# called from player when getting close or far
+func highlight():
+	modulate = Color(HIGHLIGHT_AMOUNT, HIGHLIGHT_AMOUNT, HIGHLIGHT_AMOUNT)
+func unhighlight():
+	modulate = Color.white
