@@ -15,8 +15,10 @@ var knockback_velocity := Vector2.ZERO
 const KNOCKBACK_DECEL_LERP := 0.2
 export var BulletResource : Resource
 
+# how high to shoot from shoes
+const SHOOT_HEIGHT := -90
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	var input = get_input_vector()
 	
@@ -28,7 +30,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity + knockback_velocity)
 	
 	# HOLD ITEM
-	if Input.is_action_just_pressed("pickup") and item_in_range != 0:
+	if Input.is_action_pressed("pickup") and item_in_range != 0:
 		hold_item(item_in_range)
 	
 	# SHOOT ITEM
@@ -44,7 +46,24 @@ func _physics_process(delta):
 #		run_animation("Idle")
 	else:
 		$Sprite.play("Walk")
-		$Sprite.flip_h = input.x > 0
+	
+	# set direction based on mouse relative to gun
+	var mouse_pos = get_local_mouse_position()-Vector2(0, $Gun.position.y)
+	var right = mouse_pos.x >= 0
+	
+	if right:
+		$Sprite.flip_h = true
+		$Gun.flip_h = true
+		$Gun.offset.x = 140
+		$Gun.position.x = 12
+		$Gun.rotation = (mouse_pos-Vector2($Gun.position.x, 0)).angle()
+	else:
+		$Sprite.flip_h = false
+		$Gun.flip_h = false
+		$Gun.offset.x = -140
+		$Gun.position.x = -12
+		$Gun.rotation = (mouse_pos-Vector2($Gun.position.x, 0)).angle() + PI
+	
 
 ## set animation if its not already running
 #func run_animation(animation_name):
@@ -73,11 +92,11 @@ func remove_item():
 
 func shoot():
 	
-	var mouse_angle := get_local_mouse_position().angle()
+	var mouse_angle := (get_local_mouse_position()-Vector2(0, SHOOT_HEIGHT)).angle()
 	
 	# add bullet
 	var bullet = BulletResource.instance()
-	bullet.init(item_held, position, mouse_angle)
+	bullet.init(item_held, position + Vector2(0, SHOOT_HEIGHT), mouse_angle)
 	get_parent().add_child(bullet)
 	
 	# knockback player in opposite direction as shot

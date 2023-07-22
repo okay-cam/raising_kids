@@ -3,14 +3,9 @@ extends StaticBody2D
 
 
 
-const HIGHLIGHT_AMOUNT = 1.8
+const HIGHLIGHT_AMOUNT = 1.5
 
 export var item := 2
-
-
-func _ready():
-	$Sprite.frame = item
-
 
 # called from player when getting close or far
 func highlight():

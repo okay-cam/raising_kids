@@ -1,19 +1,20 @@
 extends CanvasLayer
 
-export var MainGameScene : PackedScene
-export var MenuGameScene : PackedScene
-export var PauseGameScene : PackedScene
+#export var MainGameScene : PackedScene
+#export var MenuGameScene : PackedScene
+
+const Game = "res://src/Level.tscn"
+const MainMenu = "res://src/start_menu.tscn"
 
 var pause_state := false
 
-var loss := false
+func _ready():
+	pause_state = false
+	hide()
 
-var win := false
-
-func _input(event):
-	if event.is_action_pressed("pause"):
-		pause_state = !pause_state
-		update_pause_screen()
+func toggle_pause():
+	pause_state = !pause_state
+	update_pause_screen()
 
 func update_pause_screen():
 	if pause_state:
@@ -32,5 +33,11 @@ func _on_Quit_buton_button_up():
 	get_tree().quit()
 
 func _on_Menu_buton_button_up():
-	get_tree().change_scene(MenuGameScene.resource_path)
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(MainMenu)
 
+func _on_Restart_button_pressed():
+	get_tree().paused = false
+# warning-ignore:return_value_discarded
+	get_tree().reload_current_scene()
+#	get_tree().changes_scene(MainGameScene.resource_path)

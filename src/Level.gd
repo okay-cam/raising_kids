@@ -12,13 +12,25 @@ var dead_children = 0
 
 var spawned_children = 0
 
+enum SCREEN {
+	HELP
+	GAMEPLAY,
+	PAUSE,
+	END
+}
+
+var screen = SCREEN.GAMEPLAY
 
 
 func _ready():
+	randomize()
 	start()
 
 func start():
 	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
+
+func _process(delta):
+	print(successful_children)
 
 func _on_ChildSpawnTimer_timeout():
 	
@@ -30,12 +42,22 @@ func _on_ChildSpawnTimer_timeout():
 
 func child_success():
 	successful_children += 1
-	
-	# !! game win if 5
+	check_game_over()
 
 func child_death():
-	successful_children += 1
-	
-	# !! add game loss
-	pass
+	dead_children += 1
+	check_game_over()
 
+func check_game_over():
+	if dead_children + successful_children >= CHILD_GOAL:
+		screen = SCREEN.END
+		$EndScreen.alive_stats = successful_children
+		$EndScreen.dead_stats = dead_children
+		$EndScreen.activate()
+
+
+
+
+func _input(event):
+	if event.is_action_pressed("pause") and (screen == SCREEN.GAMEPLAY or screen == SCREEN.PAUSE):
+		$PauseMenu.toggle_pause()

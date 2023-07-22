@@ -1,10 +1,13 @@
 extends CanvasLayer
 
-export var MainGameScene : PackedScene
-export var OptionGameScene : PackedScene
+#export var MainGameScene : PackedScene
+#export var OptionGameScene : PackedScene
+
+const MainGame = "res://src/Level.tscn"
 
 func _on_Start_Button_button_up():
-	get_tree().change_scene(MainGameScene.resource_path)
+# warning-ignore:return_value_discarded
+	get_tree().change_scene(MainGame)
 
 
 func _on_Quit_buton_button_up():

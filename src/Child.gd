@@ -41,10 +41,10 @@ enum {
 
 # REQUESTS
 
-# time between requests !!unused atm
-const CHILL_TIME := 3.0
+# time between requests
+const CHILL_TIME := 4.5
 # time to complete request
-const SERVE_TIME := 22.0
+const SERVE_TIME := 30.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -54,7 +54,7 @@ var current_request := NONE
 # number of completed requests for current age
 var completed_requests := 0
 
-const REQUEST_BOX_HEIGHT = [0, -55, -66, -120, -150]
+const REQUEST_BOX_HEIGHT = [0, -72, -89, -160, -200]
 
 # MOVEMENT
 # direction of movement
@@ -100,8 +100,6 @@ func refresh_normal_speed():
 
 func _physics_process(delta):
 	
-	print(state)
-	
 	var velocity : Vector2 = direction * speed
 	
 	# lerp to goal speed
@@ -128,6 +126,11 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
+		
+#		# !! extra time to serve babies when learning how the game works
+#		if age == BABY:
+#			patience_bar.value -= (100.0 / BABY_SERVE_TIME) * delta
+#		else:
 		patience_bar.value -= (100.0 / SERVE_TIME) * delta
 		
 		var value : float = patience_bar.value
@@ -139,6 +142,7 @@ func _physics_process(delta):
 		if value <= 0:
 			state = DEAD
 			$Sprite.animation = "Dead"
+			emit_signal("dead")
 			remove_request()
 			refresh_normal_speed()
 		
@@ -182,6 +186,7 @@ func _on_ItemArea_body_entered(body):
 		# remove adult when given keys
 		if age == ADULT:
 			# !! fade away later to leave
+			emit_signal("success")
 			queue_free()
 		
 		if age != ADULT:
