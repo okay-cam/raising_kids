@@ -83,7 +83,7 @@ autostart = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = -5.0
-bus = "Music"
+autoplay = true
 
 [node name="Floor" type="Sprite" parent="."]
 scale = Vector2( 0.8, 0.8 )
