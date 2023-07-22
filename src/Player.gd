@@ -37,6 +37,9 @@ func _physics_process(delta):
 	# REDUCE KNOCKBACK
 	knockback_velocity = knockback_velocity.linear_interpolate(Vector2.ZERO, KNOCKBACK_DECEL_LERP)
 	
+	# SET CAMERA
+	update_camera()
+	
 
 
 func get_input_vector():
@@ -74,6 +77,9 @@ func shoot():
 	remove_item()
 	
 
+
+func update_camera():
+	$Camera2D.offset = get_local_mouse_position() / 2.5
 
 
 # system works if only one pickup is in range at one time

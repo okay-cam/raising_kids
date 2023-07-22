@@ -22,7 +22,7 @@ func _physics_process(delta):
 		# set new velocity
 		velocity = velocity.bounce(collision.normal)
 		# reduce velocity from bounce
-		velocity /= 2
+#		velocity /= 2
 	
 	#	# slow down over time
 #	velocity = velocity.linear_interpolate(Vector2.ZERO, DECELERATE_LERP)
