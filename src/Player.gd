@@ -100,3 +100,5 @@ func _on_PickupArea_body_exited(body):
 	if body.is_in_group("ItemBox"):
 		item_in_range = 0
 		body.unhighlight()
+
+
