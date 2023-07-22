@@ -15,7 +15,7 @@ _global_script_class_icons={
 [application]
 
 config/name="RaisingKids"
-run/main_scene="res://src/Level.tscn"
+run/main_scene="res://src/start_menu.tscn"
 
 [display]
 
