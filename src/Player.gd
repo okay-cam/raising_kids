@@ -38,9 +38,6 @@ func _physics_process(delta):
 	# REDUCE KNOCKBACK
 	knockback_velocity = knockback_velocity.linear_interpolate(Vector2.ZERO, KNOCKBACK_DECEL_LERP)
 	
-	# SET CAMERA
-	update_camera()
-	
 	# set animation and frame
 	if input == Vector2.ZERO:
 		$Sprite.play("Idle")
@@ -90,9 +87,6 @@ func shoot():
 	remove_item()
 	
 
-
-func update_camera():
-	$Camera2D.offset = get_local_mouse_position() / 2.5
 
 
 # system works if only one pickup is in range at one time
