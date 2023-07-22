@@ -22,7 +22,7 @@ func start():
 
 func _on_ChildSpawnTimer_timeout():
 	
-	$ChildSpawner.spawn_child()
+	$ChildSpawner.start()
 	spawned_children += 1
 	
 	if spawned_children < CHILD_GOAL:

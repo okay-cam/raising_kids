@@ -42,9 +42,9 @@ enum {
 # REQUESTS
 
 # time between requests !!unused atm
-const CHILL_TIME := 8.0
+const CHILL_TIME := 3.0
 # time to complete request
-const SERVE_TIME := 15.0
+const SERVE_TIME := 22.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -54,7 +54,7 @@ var current_request := NONE
 # number of completed requests for current age
 var completed_requests := 0
 
-const REQUEST_BOX_HEIGHT = [0, -132, -140, -196, -220]
+const REQUEST_BOX_HEIGHT = [0, -55, -66, -120, -150]
 
 # MOVEMENT
 # direction of movement
@@ -86,6 +86,7 @@ func _ready():
 	init()
 
 func init():
+	do_walk_animation()
 	remove_request()
 	refresh_request_bag()
 	$StartRequest.start(CHILL_TIME / 4)
@@ -258,13 +259,13 @@ func do_request_animation():
 	if state == DEAD:
 		return
 	$Sprite.play(str(age) + "Request")
-	patience_bar.rect_position.y = REQUEST_BOX_HEIGHT[age]
+	$PatienceNode.position.y = REQUEST_BOX_HEIGHT[age]
 	
 func do_walk_animation():
 	if state == DEAD:
 		return
 	$Sprite.play(str(age) + "Walk")
-	patience_bar.rect_position.y = REQUEST_BOX_HEIGHT[age]
+	$PatienceNode.position.y = REQUEST_BOX_HEIGHT[age]
 
 func remove_request():
 	current_request = NONE
