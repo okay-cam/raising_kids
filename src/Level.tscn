@@ -73,10 +73,10 @@ z_as_relative = false
 polygon = PoolVector2Array( -100, -1000, 100, -1000, 100, 1000, -100, 1000 )
 
 [node name="ChildSpawner" parent="." instance=ExtResource( 4 )]
-position = Vector2( -140, -196 )
+position = Vector2( -133, -445 )
 
 [node name="ChildSpawnTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 13.0
 one_shot = true
 autostart = true
 
@@ -90,5 +90,8 @@ scale = Vector2( 0.8, 0.8 )
 z_index = -1
 z_as_relative = false
 texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [connection signal="timeout" from="ChildSpawnTimer" to="." method="_on_ChildSpawnTimer_timeout"]
