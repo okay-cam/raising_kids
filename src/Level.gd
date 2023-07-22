@@ -3,15 +3,20 @@ extends Node2D
 
 const CHILD_GOAL = 5
 
+const INITIAL_CHILD_SPAWN_TIME := 1.5
+const CHILD_SPAWN_TIME := 10
+
 var successful_children = 0
 
 var spawned_children = 0
 
+
+
 func _ready():
-	
-	$ChildSpawnTimer.start()
+	start()
 
-
+func start():
+	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
 
 func _on_ChildSpawnTimer_timeout():
 	
@@ -19,5 +24,5 @@ func _on_ChildSpawnTimer_timeout():
 	spawned_children += 1
 	
 	if spawned_children < CHILD_GOAL:
-		$ChildSpawner.start()
+		$ChildSpawnTimer.start(CHILD_SPAWN_TIME)
 	

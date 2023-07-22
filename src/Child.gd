@@ -77,6 +77,8 @@ const HIT_SPEED := 25.0
 const ZOOMIES_SPEED := 8.0
 const LERP_SPEED := 0.05
 
+func _ready():
+	init()
 
 func init():
 	remove_request()

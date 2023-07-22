@@ -1,11 +1,10 @@
 extends Node2D
 
 
-export var ChildResource : Resource
-
+const ChildResource = preload("res://src/Child.tscn")
 
 func spawn_child():
 	# add child
 	var child = ChildResource.instance()
-	child.init()
 	get_parent().add_child(child)
+	pass
