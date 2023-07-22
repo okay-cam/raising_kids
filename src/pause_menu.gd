@@ -33,9 +33,11 @@ func _on_Quit_buton_button_up():
 	get_tree().quit()
 
 func _on_Menu_buton_button_up():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(MainMenu)
 
 func _on_Restart_button_pressed():
 	get_tree().paused = false
+# warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
 #	get_tree().changes_scene(MainGameScene.resource_path)

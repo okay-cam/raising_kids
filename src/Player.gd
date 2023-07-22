@@ -18,7 +18,7 @@ export var BulletResource : Resource
 # how high to shoot from shoes
 const SHOOT_HEIGHT := -90
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	var input = get_input_vector()
 	

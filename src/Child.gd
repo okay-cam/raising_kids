@@ -42,9 +42,9 @@ enum {
 # REQUESTS
 
 # time between requests
-const CHILL_TIME := 3.5
+const CHILL_TIME := 4.5
 # time to complete request
-const SERVE_TIME := 27.5
+const SERVE_TIME := 30.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -126,13 +126,12 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
-		var total_serve_time : float = SERVE_TIME
 		
-#		# extra time to serve babies when learning how the game works
-		if age == BABY:
-			patience_bar.value -= (100.0 / SERVE_TIME + 10) * delta
-		else:
-			patience_bar.value -= (100.0 / SERVE_TIME) * delta
+#		# !! extra time to serve babies when learning how the game works
+#		if age == BABY:
+#			patience_bar.value -= (100.0 / BABY_SERVE_TIME) * delta
+#		else:
+		patience_bar.value -= (100.0 / SERVE_TIME) * delta
 		
 		var value : float = patience_bar.value
 		

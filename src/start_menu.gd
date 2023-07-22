@@ -6,6 +6,7 @@ extends CanvasLayer
 const MainGame = "res://src/Level.tscn"
 
 func _on_Start_Button_button_up():
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(MainGame)
 
 
