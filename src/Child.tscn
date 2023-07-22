@@ -115,7 +115,7 @@ collision_mask = 8
 shape = SubResource( 3 )
 
 [node name="StartRequest" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 8.0
 one_shot = true
 
 [node name="ZoomiesCooldown" type="Timer" parent="."]

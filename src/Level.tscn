@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/PlaceholderWall.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/Child.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/ChildSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Level.gd" type="Script" id=5]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["Reset"]]
 position = Vector2( 0, 1 )
 z_as_relative = false
+script = ExtResource( 5 )
 
 [node name="YSort" type="YSort" parent="."]
 position = Vector2( -486, -255 )
@@ -15,9 +17,11 @@ z_index = 1
 z_as_relative = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 319, 310 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
 current = true
+zoom = Vector2( 0.8, 0.8 )
 
 [node name="ItemBox" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 113.413, 405.325 )
@@ -31,14 +35,21 @@ position = Vector2( 826, 396 )
 item = 3
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
-position = Vector2( -267, 448 )
+position = Vector2( -331, 439 )
 z_as_relative = false
 polygon = PoolVector2Array( -456, -86, 570, -51, 906.802, -57.5896, 918, -749, 1094, -585, 1040, 26, 458, 29, 64, 42, -66, 35 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
-position = Vector2( -86, -359 )
+position = Vector2( -24, -320 )
 z_as_relative = false
 polygon = PoolVector2Array( -651, 654, -719, -93, 576, -93, 829, 153, -568.595, 37.1253, -480, 765 )
 
-[node name="Child" parent="." instance=ExtResource( 4 )]
-position = Vector2( -141, -13 )
+[node name="ChildSpawner" parent="." instance=ExtResource( 4 )]
+position = Vector2( -154, -220 )
+
+[node name="ChildSpawnTimer" type="Timer" parent="."]
+wait_time = 12.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ChildSpawnTimer" to="." method="_on_ChildSpawnTimer_timeout"]

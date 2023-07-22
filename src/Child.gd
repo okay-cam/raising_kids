@@ -40,7 +40,7 @@ enum {
 # time between requests !!unused atm
 const CHILL_TIME := 8.0
 # time to complete request
-const SERVE_TIME := 5.0
+const SERVE_TIME := 10.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -53,7 +53,7 @@ var completed_requests := 0
 
 # MOVEMENT
 # direction of movement
-var direction := Vector2.RIGHT
+var direction := Vector2.DOWN
 var speed : float = 0
 var speed_goal : float = 0
 
@@ -77,14 +77,14 @@ const HIT_SPEED := 25.0
 const ZOOMIES_SPEED := 8.0
 const LERP_SPEED := 0.05
 
-func _ready():
-	refresh_normal_speed()
-	init()
 
 func init():
 	remove_request()
 	refresh_request_bag()
 	$StartRequest.start()
+	direction = Vector2.DOWN.rotated( rand_range( -PI * 0.2, PI * 0.2 ) )
+	speed = HIT_SPEED
+	speed_goal = 0
 
 # MOVEMENT
 func refresh_normal_speed():
@@ -136,9 +136,6 @@ func _physics_process(delta):
 #		print(value)
 #		print("patience tint")
 #		print($Patience.tint_progress.h)
-		
-	
-	
 
 
 func get_speed(type):
