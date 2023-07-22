@@ -81,6 +81,7 @@ pause={
 2d_physics/layer_5="Child"
 2d_physics/layer_6="ChildItemArea"
 2d_physics/layer_7="Furniture"
+2d_physics/layer_8="ItemWall"
 
 [rendering]
 
