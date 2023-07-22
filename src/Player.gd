@@ -79,7 +79,7 @@ func shoot():
 
 
 func update_camera():
-	$Camera2D.offset = get_local_mouse_position() / 3
+	$Camera2D.offset = get_local_mouse_position() / 2.5
 
 
 # system works if only one pickup is in range at one time
