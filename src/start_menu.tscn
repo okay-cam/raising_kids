@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/placeholder/baby_title.png" type="Texture" id=1]
 [ext_resource path="res://src/Level.tscn" type="PackedScene" id=2]
-[ext_resource path="res://start_menu.gd" type="Script" id=3]
+[ext_resource path="res://src/start_menu.gd" type="Script" id=3]
+[ext_resource path="res://src/Option_menu.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Theme" id=1]
 
-[node name="Node2D" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer"]
 script = ExtResource( 3 )
 MainGameScene = ExtResource( 2 )
+OptionGameScene = ExtResource( 4 )
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
@@ -70,5 +72,5 @@ margin_bottom = 204.0
 texture = ExtResource( 1 )
 
 [connection signal="button_up" from="Control/Start_buton" to="." method="_on_Start_Button_button_up"]
-[connection signal="button_up" from="Control/Option_button" to="." method="_on_Quit_button_button_up"]
+[connection signal="button_up" from="Control/Option_button" to="." method="_on_Option_button_button_up"]
 [connection signal="button_up" from="Control/Quit_buton" to="." method="_on_Quit_buton_button_up"]
