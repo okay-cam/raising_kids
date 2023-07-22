@@ -2,6 +2,7 @@ extends Camera2D
 var lower_limit_x = -640
 var upper_limit_x = 640
 
+# !! how to code camera to stay within bounds but allow mouse movement
 
 func _physics_process(delta):
 	pass

@@ -126,7 +126,13 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
-		patience_bar.value -= (100.0 / SERVE_TIME) * delta
+		var total_serve_time : float = SERVE_TIME
+		
+#		# extra time to serve babies when learning how the game works
+		if age == BABY:
+			patience_bar.value -= (100.0 / SERVE_TIME + 10) * delta
+		else:
+			patience_bar.value -= (100.0 / SERVE_TIME) * delta
 		
 		var value : float = patience_bar.value
 		
@@ -137,6 +143,7 @@ func _physics_process(delta):
 		if value <= 0:
 			state = DEAD
 			$Sprite.animation = "Dead"
+			emit_signal("dead")
 			remove_request()
 			refresh_normal_speed()
 		
@@ -180,6 +187,7 @@ func _on_ItemArea_body_entered(body):
 		# remove adult when given keys
 		if age == ADULT:
 			# !! fade away later to leave
+			emit_signal("success")
 			queue_free()
 		
 		if age != ADULT:

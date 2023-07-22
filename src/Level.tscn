@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/Couch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/items/keyes_racc.png" type="Texture" id=11]
 [ext_resource path="res://assets/items/wa'uh_coo'lah.png" type="Texture" id=12]
+[ext_resource path="res://src/end_screen.tscn" type="PackedScene" id=13]
 
 [node name="Level" type="Node2D" groups=["Reset"]]
 position = Vector2( 0, 1 )
@@ -19,6 +20,8 @@ z_as_relative = false
 script = ExtResource( 7 )
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+
+[node name="EndScreen" parent="." instance=ExtResource( 13 )]
 
 [node name="YSort" type="YSort" parent="."]
 z_index = 1

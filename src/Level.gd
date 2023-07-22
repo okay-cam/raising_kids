@@ -29,6 +29,9 @@ func _ready():
 func start():
 	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
 
+func _process(delta):
+	print(successful_children)
+
 func _on_ChildSpawnTimer_timeout():
 	
 	$ChildSpawner.start()
@@ -39,13 +42,18 @@ func _on_ChildSpawnTimer_timeout():
 
 func child_success():
 	successful_children += 1
+	check_game_over()
 
 func child_death():
 	dead_children += 1
+	check_game_over()
 
 func check_game_over():
 	if dead_children + successful_children >= CHILD_GOAL:
 		screen = SCREEN.END
+		$EndScreen.alive_stats = successful_children
+		$EndScreen.dead_stats = dead_children
+		$EndScreen.activate()
 
 
 
