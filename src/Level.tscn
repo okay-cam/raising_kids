@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/PlaceholderWall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Child.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/pause_menu.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
+pause_mode = 1
 position = Vector2( 0, 1 )
 z_as_relative = false
 
@@ -42,3 +44,5 @@ polygon = PoolVector2Array( -651, 654, -719, -93, 576, -93, 829, 153, -568.595, 
 
 [node name="Child" parent="." instance=ExtResource( 4 )]
 position = Vector2( -141, -13 )
+
+[node name="Pause_menu" parent="." instance=ExtResource( 5 )]
