@@ -20,6 +20,7 @@ func _physics_process(delta):
 	
 	var input = get_input_vector()
 	
+	
 	# smooth movement
 	velocity = velocity.linear_interpolate(input * SPEED, 0.3)
 	
@@ -40,6 +41,18 @@ func _physics_process(delta):
 	# SET CAMERA
 	update_camera()
 	
+	# set animation and frame
+	if input == Vector2.ZERO:
+		$Sprite.play("Idle")
+#		run_animation("Idle")
+	else:
+		$Sprite.play("Walk")
+		$Sprite.flip_h = input.x > 0
+
+## set animation if its not already running
+#func run_animation(animation_name):
+#	if $Sprite.animation != animation_name:
+#		$Sprite.animation = animation_name
 
 
 func get_input_vector():

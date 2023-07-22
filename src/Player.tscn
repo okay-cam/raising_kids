@@ -14,10 +14,10 @@ animations = [ {
 "name": "Idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Walk",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
