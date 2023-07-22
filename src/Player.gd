@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-const SPEED := 400
+const SPEED := 475
 var velocity := Vector2.ZERO
 
 # stores the current held item

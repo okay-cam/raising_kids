@@ -8,6 +8,9 @@ const ChildResource = preload("res://src/Child.tscn")
 # spawn child and run timer to close door
 # close door
 
+func _ready():
+	$Sprite.play("closed")
+
 func start():
 	$Sprite.play("open")
 	$SpawnChild.start()

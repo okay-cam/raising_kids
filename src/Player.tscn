@@ -27,7 +27,7 @@ radius = 15.0
 radius = 67.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player", "Reset"]]
-collision_mask = 18
+collision_mask = 82
 script = ExtResource( 1 )
 BulletResource = ExtResource( 5 )
 

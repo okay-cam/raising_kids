@@ -17,6 +17,10 @@ _global_script_class_icons={
 config/name="RaisingKids"
 run/main_scene="res://src/start_menu.tscn"
 
+[audio]
+
+default_bus_layout=""
+
 [display]
 
 window/size/width=1280
@@ -76,6 +80,7 @@ pause={
 2d_physics/layer_4="Item"
 2d_physics/layer_5="Child"
 2d_physics/layer_6="ChildItemArea"
+2d_physics/layer_7="Furniture"
 
 [rendering]
 

@@ -42,9 +42,9 @@ enum {
 # REQUESTS
 
 # time between requests !!unused atm
-const CHILL_TIME := 5.0
+const CHILL_TIME := 3.0
 # time to complete request
-const SERVE_TIME := 20.0
+const SERVE_TIME := 22.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
