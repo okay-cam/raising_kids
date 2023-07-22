@@ -31,7 +31,8 @@ enum {
 	NONE = 0,
 	WATER,
 	FOOD,
-	KEYS
+	KEYS,
+	TOY
 }
 
 
@@ -50,6 +51,7 @@ var current_request := NONE
 # number of completed requests for current age
 var completed_requests := 0
 
+const REQUEST_BOX_HEIGHT = [0, -132, -140, -196, -220]
 
 # MOVEMENT
 # direction of movement
@@ -83,7 +85,7 @@ func _ready():
 func init():
 	remove_request()
 	refresh_request_bag()
-	$StartRequest.start()
+	$StartRequest.start(CHILL_TIME + rand_range(0, 3.5))
 	direction = Vector2.DOWN.rotated( rand_range( -PI * 0.2, PI * 0.2 ) )
 	speed = HIT_SPEED
 	speed_goal = 0
@@ -178,7 +180,7 @@ func _on_ItemArea_body_entered(body):
 		
 		if age != ADULT:
 			# start new request
-			$StartRequest.start()
+			$StartRequest.start(CHILL_TIME)
 			
 			# walk around again
 			state = WALK
@@ -217,10 +219,10 @@ func increase_age():
 func refresh_request_bag():
 	match age:
 		BABY:
-			request_bag = [WATER, FOOD]
+			request_bag = [KEYS, TOY]
 #			request_bag = [WATER, FOOD, KEYS]
 		KID:
-			request_bag = [WATER, FOOD]
+			request_bag = [WATER, FOOD, TOY]
 		TEEN:
 			request_bag = [WATER, FOOD]
 		ADULT:
@@ -251,11 +253,14 @@ func generate_request():
 func do_request_animation():
 	if state == DEAD:
 		return
-	$Sprite.animation = str(age) + "Request"
+	$Sprite.play(str(age) + "Request")
+	$Patience.rect_position.y = REQUEST_BOX_HEIGHT[age]
+	
 func do_walk_animation():
 	if state == DEAD:
 		return
-	$Sprite.animation = str(age) + "Walk"
+	$Sprite.play(str(age) + "Walk")
+	$Patience.rect_position.y = REQUEST_BOX_HEIGHT[age]
 
 func remove_request():
 	current_request = NONE

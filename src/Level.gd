@@ -4,7 +4,7 @@ extends Node2D
 const CHILD_GOAL = 5
 
 const INITIAL_CHILD_SPAWN_TIME := 1.5
-const CHILD_SPAWN_TIME := 10
+const CHILD_SPAWN_TIME := 13
 
 var successful_children = 0
 
