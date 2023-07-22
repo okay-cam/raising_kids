@@ -1,8 +1,11 @@
-[gd_resource type="Theme" format=2]
+[gd_resource type="Theme" load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/Lato-Bold.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+use_filter = true
+font_data = ExtResource( 1 )
 
 [resource]
-ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
-ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-ProgressBar/fonts/font = null
-ProgressBar/styles/bg = null
-ProgressBar/styles/fg = null
+Label/fonts/font = SubResource( 1 )

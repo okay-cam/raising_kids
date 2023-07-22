@@ -28,7 +28,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity + knockback_velocity)
 	
 	# HOLD ITEM
-	if Input.is_action_just_pressed("pickup") and item_in_range != 0:
+	if Input.is_action_pressed("pickup") and item_in_range != 0:
 		hold_item(item_in_range)
 	
 	# SHOOT ITEM

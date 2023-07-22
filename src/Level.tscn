@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/music/nursery_gameplay_loop.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/environment/floore.png" type="Texture" id=9]
 [ext_resource path="res://src/Couch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/items/keyes_racc.png" type="Texture" id=11]
+[ext_resource path="res://assets/items/wa'uh_coo'lah.png" type="Texture" id=12]
 
 [node name="Level" type="Node2D" groups=["Reset"]]
 position = Vector2( 0, 1 )
@@ -32,31 +34,34 @@ position = Vector2( -205, 54 )
 current = true
 zoom = Vector2( 0.8, 0.8 )
 limit_left = -640
-limit_top = -480
+limit_top = -520
 limit_right = 640
 limit_bottom = 480
 script = ExtResource( 6 )
 
-[node name="ItemBox" parent="YSort" instance=ExtResource( 2 )]
+[node name="Water1" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -403, 290 )
 item = 1
+
+[node name="Sprite" type="Sprite" parent="YSort/Water1"]
+position = Vector2( 0, -51 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 12 )
 
 [node name="ItemBox2" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( -489, -271 )
 
-[node name="ItemBox3" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 535, -281 )
+[node name="Keys3" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 433, -420 )
 item = 3
+
+[node name="Sprite" type="Sprite" parent="YSort/Keys3"]
+scale = Vector2( 0.5, 0.4 )
+texture = ExtResource( 11 )
 
 [node name="ItemBox4" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 398, 263 )
 item = 4
-
-[node name="Wall" parent="." instance=ExtResource( 3 )]
-position = Vector2( 0, -476 )
-z_index = -99
-z_as_relative = false
-polygon = PoolVector2Array( -800, -100, 800, -100, 800, 100, -800, 100 )
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 531 )
@@ -76,11 +81,18 @@ z_index = -99
 z_as_relative = false
 polygon = PoolVector2Array( -100, -1000, 100, -1000, 100, 1000, -100, 1000 )
 
+[node name="Wall" parent="." instance=ExtResource( 3 )]
+position = Vector2( 0, -476 )
+z_index = -99
+z_as_relative = false
+color = Color( 0.815686, 0.756863, 0.756863, 1 )
+polygon = PoolVector2Array( -800, -200, 401, -208, 800, -200, 800, 100, 200, 99, -800, 100 )
+
 [node name="ChildSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( -133, -445 )
 
 [node name="ChildSpawnTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 16.0
 one_shot = true
 autostart = true
 

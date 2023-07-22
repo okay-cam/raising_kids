@@ -1,12 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/pause_menu.gd" type="Script" id=1]
+[ext_resource path="res://src/theme.tres" type="Theme" id=2]
 
 [sub_resource type="Theme" id=1]
 
 [node name="PauseMenu" type="CanvasLayer"]
 pause_mode = 2
-visible = false
 script = ExtResource( 1 )
 
 [node name="Control" type="Control" parent="."]
@@ -18,73 +18,94 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.470588 )
 
-[node name="Resume_buton" type="Button" parent="Control"]
+[node name="VBox" type="VBoxContainer" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -103.5
-margin_top = -91.0
-margin_right = 103.5
-margin_bottom = -31.0
+margin_left = -42.0
+margin_top = -46.0
+margin_right = 42.0
+margin_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 600 )
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Paused" type="Label" parent="Control/VBox"]
+margin_top = 141.0
+margin_right = 400.0
+margin_bottom = 219.0
+theme = ExtResource( 2 )
+text = "Paused"
+align = 1
+valign = 1
+
+[node name="Resume_buton" type="Button" parent="Control/VBox"]
+margin_left = 75.0
+margin_top = 239.0
+margin_right = 325.0
+margin_bottom = 279.0
+rect_min_size = Vector2( 250, 40 )
+size_flags_horizontal = 4
 theme = SubResource( 1 )
 text = "Resume"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Option_button" type="Button" parent="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -103.5
-margin_top = -15.0
-margin_right = 103.5
-margin_bottom = 45.0
+[node name="Restart_button" type="Button" parent="Control/VBox"]
+margin_left = 75.0
+margin_top = 299.0
+margin_right = 325.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 250, 40 )
+size_flags_horizontal = 4
+text = "Restart"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Option_button" type="Button" parent="Control/VBox"]
+visible = false
+margin_left = 75.0
+margin_top = 299.0
+margin_right = 325.0
+margin_bottom = 339.0
+rect_min_size = Vector2( 250, 40 )
+size_flags_horizontal = 4
 text = "Option"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Menu_buton" type="Button" parent="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -103.5
-margin_top = 63.0
-margin_right = 103.5
-margin_bottom = 123.0
+[node name="Menu_buton" type="Button" parent="Control/VBox"]
+margin_left = 75.0
+margin_top = 359.0
+margin_right = 325.0
+margin_bottom = 399.0
+rect_min_size = Vector2( 250, 40 )
+size_flags_horizontal = 4
 text = "Main menu"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Quit_buton" type="Button" parent="Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -103.5
-margin_top = 144.0
-margin_right = 103.5
-margin_bottom = 204.0
+[node name="Quit_buton" type="Button" parent="Control/VBox"]
+margin_left = 75.0
+margin_top = 419.0
+margin_right = 325.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 250, 40 )
+size_flags_horizontal = 4
 text = "Quit"
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="TextEdit" type="TextEdit" parent="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -229.0
-margin_top = 94.0
-margin_right = 183.0
-margin_bottom = 161.0
-text = "Pause menu"
-
-[connection signal="button_up" from="Control/Resume_buton" to="." method="_on_Resume_buton_button_up"]
-[connection signal="pressed" from="Control/Option_button" to="." method="_on_Option_button_pressed"]
-[connection signal="button_up" from="Control/Menu_buton" to="." method="_on_Menu_buton_button_up"]
-[connection signal="button_up" from="Control/Quit_buton" to="." method="_on_Quit_buton_button_up"]
+[connection signal="button_up" from="Control/VBox/Resume_buton" to="." method="_on_Resume_buton_button_up"]
+[connection signal="pressed" from="Control/VBox/Restart_button" to="." method="_on_Restart_button_pressed"]
+[connection signal="pressed" from="Control/VBox/Option_button" to="." method="_on_Option_button_pressed"]
+[connection signal="button_up" from="Control/VBox/Menu_buton" to="." method="_on_Menu_buton_button_up"]
+[connection signal="button_up" from="Control/VBox/Quit_buton" to="." method="_on_Quit_buton_button_up"]

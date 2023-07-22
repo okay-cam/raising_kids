@@ -41,10 +41,10 @@ enum {
 
 # REQUESTS
 
-# time between requests !!unused atm
-const CHILL_TIME := 3.0
+# time between requests
+const CHILL_TIME := 3.5
 # time to complete request
-const SERVE_TIME := 22.0
+const SERVE_TIME := 27.5
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -99,8 +99,6 @@ func refresh_normal_speed():
 	speed_goal = get_speed(NORMAL)
 
 func _physics_process(delta):
-	
-	print(state)
 	
 	var velocity : Vector2 = direction * speed
 	
