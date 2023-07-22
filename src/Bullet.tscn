@@ -19,8 +19,10 @@ animations = [ {
 radius = 23.3452
 
 [node name="Bullet" type="KinematicBody2D" groups=["Reset"]]
+z_index = 2
+z_as_relative = false
 collision_layer = 8
-collision_mask = 2
+collision_mask = 130
 script = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
