@@ -54,7 +54,7 @@ var current_request := NONE
 # number of completed requests for current age
 var completed_requests := 0
 
-const REQUEST_BOX_HEIGHT = [0, -55, -66, -120, -150]
+const REQUEST_BOX_HEIGHT = [0, -72, -89, -160, -200]
 
 # MOVEMENT
 # direction of movement

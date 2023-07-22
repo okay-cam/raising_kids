@@ -7,6 +7,7 @@
 [ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/player/saddad walk 3.png" type="Texture" id=6]
 [ext_resource path="res://assets/items/gun.png" type="Texture" id=7]
+[ext_resource path="res://assets/dhadhos/shadow_circle.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -22,7 +23,7 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.0
+radius = 16.1245
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 67.0
@@ -35,6 +36,11 @@ BulletResource = ExtResource( 5 )
 [node name="PlayerPolygon" type="Polygon2D" parent="."]
 visible = false
 polygon = PoolVector2Array( -28, -64, -1, -81, 28, -64, 9, 0, -9, 0 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( -0.500005, -5.5 )
+scale = Vector2( 0.460465, 0.300926 )
+texture = ExtResource( 7 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -95 )

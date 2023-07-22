@@ -32,7 +32,10 @@ z_index = 1
 z_as_relative = false
 
 [node name="Couch" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 127, -77 )
+position = Vector2( 224, 95 )
+
+[node name="Table" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 220, 279 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( -205, 54 )
