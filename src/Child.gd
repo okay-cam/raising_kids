@@ -86,7 +86,7 @@ func _ready():
 	init()
 
 func init():
-	do_walk_animation()
+	do_character_animation()
 	remove_request()
 	refresh_request_bag()
 	$StartRequest.start(CHILL_TIME / 4)
@@ -118,11 +118,13 @@ func _physics_process(delta):
 	
 	# face left when moving left
 	if state == WALK:
-		do_walk_animation()
 		$Sprite.flip_h = direction.x < 0
 	
 	if state == REQUEST:
-		do_request_animation()
+		
+		if age == BABY:
+			do_character_animation()
+		
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
@@ -192,6 +194,8 @@ func _on_ItemArea_body_entered(body):
 			# increase age after all requests
 			if completed_requests >= TOTAL_REQUESTS:
 				increase_age()
+			
+			do_character_animation()
 	
 	# DO THIS CODE REGARDLESS OF CORRECT ITEM
 	
@@ -252,19 +256,19 @@ func generate_request():
 	patience_bar.tint_progress.h = 0.333
 	
 	# change sprite animation to requesting
-	do_request_animation()
+	if age == BABY:
+		do_character_animation()
 
-
-func do_request_animation():
+func do_character_animation():
+	# dont animate if dead
 	if state == DEAD:
 		return
-	$Sprite.play(str(age) + "Request")
-	$PatienceNode.position.y = REQUEST_BOX_HEIGHT[age]
-	
-func do_walk_animation():
-	if state == DEAD:
-		return
-	$Sprite.play(str(age) + "Walk")
+	# cry animation if baby
+	if age == BABY and state == REQUEST:
+		$Sprite.play(str(age) + "Request")
+	else:
+		$Sprite.play(str(age))
+	# set height of request bubble
 	$PatienceNode.position.y = REQUEST_BOX_HEIGHT[age]
 
 func remove_request():

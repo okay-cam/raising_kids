@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/teen spin1.png-2bb557eb2f381a7784549c2e547421cb.stex"
+path="res://.import/teen_spin2.png-a4f13cf56a3877f4da3982924ef56cce.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/children/teen spin1.png"
-dest_files=[ "res://.import/teen spin1.png-2bb557eb2f381a7784549c2e547421cb.stex" ]
+source_file="res://assets/children/teen_spin2.png"
+dest_files=[ "res://.import/teen_spin2.png-a4f13cf56a3877f4da3982924ef56cce.stex" ]
 
 [params]
 

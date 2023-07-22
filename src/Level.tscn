@@ -80,7 +80,7 @@ polygon = PoolVector2Array( -100, -1000, 100, -1000, 100, 1000, -100, 1000 )
 position = Vector2( -133, -445 )
 
 [node name="ChildSpawnTimer" type="Timer" parent="."]
-wait_time = 13.0
+wait_time = 15.0
 one_shot = true
 autostart = true
 

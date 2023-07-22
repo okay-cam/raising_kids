@@ -2,7 +2,8 @@ extends Node2D
 
 export var spawn_offset := Vector2(0, 100)
 
-const ChildResource = preload("res://src/Child.tscn")
+#onready var ChildResource = preload("res://src/Child.tscn")
+export var ChildResource : Resource
 
 # first open door & run timer to spawn child
 # spawn child and run timer to close door
