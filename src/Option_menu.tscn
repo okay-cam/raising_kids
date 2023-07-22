@@ -1,15 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Option_menu.gd" type="Script" id=2]
-[ext_resource path="res://src/start_menu.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Theme" id=1]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource( 2 )
 MainGameScene = ExtResource( 1 )
-MenuGameScene = ExtResource( 3 )
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0
@@ -27,12 +25,26 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 416.0
-margin_top = 197.0
-margin_right = 623.0
-margin_bottom = 257.0
+margin_left = 414.0
+margin_top = 226.0
+margin_right = 621.0
+margin_bottom = 286.0
 theme = SubResource( 1 )
 text = "Menu"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Quit_buton" type="Button" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 411.0
+margin_top = 314.0
+margin_right = 618.0
+margin_bottom = 374.0
+text = "Quit"
 __meta__ = {
 "_editor_description_": ""
 }

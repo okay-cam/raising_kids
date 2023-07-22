@@ -11,16 +11,13 @@ position = Vector2( 0, 1 )
 z_as_relative = false
 
 [node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="YSort" type="YSort" parent="."]
 z_index = 1
 z_as_relative = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 129, 153 )
-
-[node name="Camera2D" type="Camera2D" parent="YSort/Player"]
-current = true
 
 [node name="ItemBox" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 113.413, 405.325 )
