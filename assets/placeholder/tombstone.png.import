@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/request_box_filled.png-8ba5e962266985417cc5bec4c239f80b.stex"
+path="res://.import/tombstone.png-8b8135106fa5ac63ea79e26840efe2de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder/request_box_filled.png"
-dest_files=[ "res://.import/request_box_filled.png-8ba5e962266985417cc5bec4c239f80b.stex" ]
+source_file="res://assets/placeholder/tombstone.png"
+dest_files=[ "res://.import/tombstone.png-8b8135106fa5ac63ea79e26840efe2de.stex" ]
 
 [params]
 

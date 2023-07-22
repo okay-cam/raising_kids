@@ -107,24 +107,34 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
+		print($Patience.value)
 		$Patience.value -= (100.0 / SERVE_TIME) * delta
 		
-		var value = $Patience.value
+		var value : float = $Patience.value
 		
 		# go from green to red over time
-#		$Patience.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 20, 120 + 20), 0, 120)
-		$Patience.tint_progress.h = range_lerp(value, 0, 100, 0, 1)
+		$Patience.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
 		
-		print("val")
-		print(value)
-		print("patience tint")
-		print($Patience.tint_progress.h)
+		if value <= 0:
+			state = DEAD
+			$Sprite.animation = "Dead"
+			remove_request()
+			get_speed(NORMAL)
+		
+#		print("val")
+#		print(value)
+#		print("patience tint")
+#		print($Patience.tint_progress.h)
 		
 	
 	
 
 
 func get_speed(type):
+	
+	if state == DEAD:
+		return 0
+	
 	match age:
 		BABY:
 			return BABY_SPEED[type]
@@ -182,7 +192,7 @@ func refresh_request_bag():
 func generate_request():
 	if request_bag.size() <= 0:
 		print_debug("ran out of requests")
-		return
+		refresh_request_bag()
 	
 	state = REQUEST
 	
