@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+onready var request_icon = $Patience/Icon
+
+# !!
+# the player should always move at their normal speed
+
+
 # AGE
 enum {
 	BABY = 1
@@ -36,6 +42,8 @@ const CHILL_TIME := 8.0
 # time to complete request
 const SERVE_TIME := 5.0
 
+# number of requests until aging (except adult)
+const TOTAL_REQUESTS := 2
 # stores all possible requests for that child
 var request_bag = []
 var current_request := NONE
@@ -59,7 +67,9 @@ enum {
 
 # normal speed (other items might be hit speed, zoomies speed, etc)
 const BABY_SPEED = [0.0]
-const KID_SPEED = [3.0]
+const KID_SPEED = [4.0]
+const TEEN_SPEED = [6.0]
+const ADULT_SPEED = [7.0]
 
 # speed when hit
 const HIT_SPEED := 25.0
@@ -68,9 +78,8 @@ const ZOOMIES_SPEED := 8.0
 const LERP_SPEED := 0.05
 
 func _ready():
-	
+	refresh_normal_speed()
 	init()
-	start_moving()
 
 func init():
 	remove_request()
@@ -78,10 +87,12 @@ func init():
 	$StartRequest.start()
 
 # MOVEMENT
-func start_moving():
+func refresh_normal_speed():
 	speed_goal = get_speed(NORMAL)
 
 func _physics_process(delta):
+	
+	print(state)
 	
 	var velocity : Vector2 = direction * speed
 	
@@ -107,7 +118,6 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
-		print($Patience.value)
 		$Patience.value -= (100.0 / SERVE_TIME) * delta
 		
 		var value : float = $Patience.value
@@ -115,11 +125,12 @@ func _physics_process(delta):
 		# go from green to red over time
 		$Patience.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
 		
+		# DIE
 		if value <= 0:
 			state = DEAD
 			$Sprite.animation = "Dead"
 			remove_request()
-			get_speed(NORMAL)
+			refresh_normal_speed()
 		
 #		print("val")
 #		print(value)
@@ -140,10 +151,14 @@ func get_speed(type):
 			return BABY_SPEED[type]
 		KID:
 			return KID_SPEED[type]
+		TEEN:
+			return TEEN_SPEED[type]
+		ADULT:
+			return ADULT_SPEED[type]
 
 
 func _on_ZoomiesCooldown_timeout():
-	speed_goal = get_speed(NORMAL)
+	refresh_normal_speed()
 
 
 
@@ -151,26 +166,50 @@ func _on_ZoomiesCooldown_timeout():
 func _on_ItemArea_body_entered(body):
 	var item = body.item
 	
-	# make child happy
+	# HOLDS CORRECT ITEM
 	if item == current_request:
 		completed_requests += 1
+		$Patience.value = 100
 		remove_request()
-		$StartRequest.start()
+		
+		# remove adult when given keys
+		if age == ADULT:
+			# !! fade away later to leave
+			queue_free()
+		
+		if age != ADULT:
+			# start new request
+			$StartRequest.start()
+			
+			# walk around again
+			state = WALK
+			
+			# increase age after all requests
+			if completed_requests >= TOTAL_REQUESTS:
+				increase_age()
+	
+	# DO THIS CODE REGARDLESS OF CORRECT ITEM
 	
 	# set child movement
 	direction = body.velocity.normalized()
 	
 	speed = HIT_SPEED
 	
-	if age == KID:
-		speed_goal = ZOOMIES_SPEED
-		$ZoomiesCooldown.start()
+	# !! zoomies
+#	if age == KID:
+#		speed_goal = ZOOMIES_SPEED
+#		$ZoomiesCooldown.start()
 	
 	# remove item
 	body.take()
 
 
+# AGING
 
+func increase_age():
+	age += 1
+	completed_requests = 0
+	refresh_normal_speed()
 
 
 # REQUESTS
@@ -200,23 +239,28 @@ func generate_request():
 	current_request = request_bag.pop_at(randi() % len(request_bag))
 	
 	# show request
-	$RequestIcon.show()
-	$RequestIcon.frame = current_request
+	request_icon.show()
+	request_icon.frame = current_request
 	$Patience.show()
 	$Patience.value = 100
+	$Patience.tint_progress.h = 0.333
 	
 	# change sprite animation to requesting
 	do_request_animation()
 
 
 func do_request_animation():
+	if state == DEAD:
+		return
 	$Sprite.animation = str(age) + "Request"
 func do_walk_animation():
+	if state == DEAD:
+		return
 	$Sprite.animation = str(age) + "Walk"
 
 func remove_request():
-	state = WALK
-	$RequestIcon.hide()
+	current_request = NONE
+	request_icon.hide()
 	$Patience.hide()
 	
 	$StartRequest.stop()
