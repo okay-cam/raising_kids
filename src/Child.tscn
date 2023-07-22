@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/placeholder/baby_happy.png" type="Texture" id=1]
 [ext_resource path="res://assets/placeholder/baby_sad.png" type="Texture" id=2]
 [ext_resource path="res://src/Child.gd" type="Script" id=3]
 [ext_resource path="res://src/ItemFrames.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://src/theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/placeholder/request_box.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,6 +35,32 @@ script = ExtResource( 3 )
 frames = SubResource( 1 )
 animation = "1Walk"
 
+[node name="Patience" type="TextureProgress" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -94.0
+margin_right = 40.0
+margin_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 80, 60 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+value = 80.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 6 )
+tint_progress = Color( 0, 1, 0, 1 )
+
+[node name="RequestIcon" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -69 )
+scale = Vector2( 0.6, 0.6 )
+frames = ExtResource( 4 )
+animation = "Items"
+
 [node name="MoveCollision" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
@@ -43,14 +71,8 @@ collision_mask = 8
 [node name="ItemCollision" type="CollisionShape2D" parent="ItemArea"]
 shape = SubResource( 3 )
 
-[node name="RequestIcon" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -56 )
-scale = Vector2( 0.5, 0.5 )
-frames = ExtResource( 4 )
-animation = "Items"
-
 [node name="StartRequest" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 0.5
 one_shot = true
 
 [node name="ZoomiesCooldown" type="Timer" parent="."]
