@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
-onready var request_icon = $Patience/Icon
+onready var request_icon = $PatienceNode/Patience/Icon
+onready var patience_bar = $PatienceNode/Patience
 
 # !!
 # the player should always move at their normal speed
 
+signal success
+signal dead
 
 # AGE
 enum {
@@ -41,7 +44,7 @@ enum {
 # time between requests !!unused atm
 const CHILL_TIME := 8.0
 # time to complete request
-const SERVE_TIME := 10.0
+const SERVE_TIME := 15.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -85,7 +88,7 @@ func _ready():
 func init():
 	remove_request()
 	refresh_request_bag()
-	$StartRequest.start(CHILL_TIME + rand_range(0, 3.5))
+	$StartRequest.start(CHILL_TIME / 4)
 	direction = Vector2.DOWN.rotated( rand_range( -PI * 0.2, PI * 0.2 ) )
 	speed = HIT_SPEED
 	speed_goal = 0
@@ -122,12 +125,12 @@ func _physics_process(delta):
 		$Sprite.flip_h = false
 		
 		# patience runs out after SERVE_TIME seconds
-		$Patience.value -= (100.0 / SERVE_TIME) * delta
+		patience_bar.value -= (100.0 / SERVE_TIME) * delta
 		
-		var value : float = $Patience.value
+		var value : float = patience_bar.value
 		
 		# go from green to red over time
-		$Patience.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
+		patience_bar.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
 		
 		# DIE
 		if value <= 0:
@@ -170,7 +173,7 @@ func _on_ItemArea_body_entered(body):
 	# HOLDS CORRECT ITEM
 	if item == current_request:
 		completed_requests += 1
-		$Patience.value = 100
+		patience_bar.value = 100
 		remove_request()
 		
 		# remove adult when given keys
@@ -180,7 +183,7 @@ func _on_ItemArea_body_entered(body):
 		
 		if age != ADULT:
 			# start new request
-			$StartRequest.start(CHILL_TIME)
+			$StartRequest.start(CHILL_TIME + rand_range(0, 5.5))
 			
 			# walk around again
 			state = WALK
@@ -210,6 +213,7 @@ func _on_ItemArea_body_entered(body):
 func increase_age():
 	age += 1
 	completed_requests = 0
+	refresh_request_bag()
 	refresh_normal_speed()
 
 
@@ -242,9 +246,9 @@ func generate_request():
 	# show request
 	request_icon.show()
 	request_icon.frame = current_request
-	$Patience.show()
-	$Patience.value = 100
-	$Patience.tint_progress.h = 0.333
+	patience_bar.show()
+	patience_bar.value = 100
+	patience_bar.tint_progress.h = 0.333
 	
 	# change sprite animation to requesting
 	do_request_animation()
@@ -254,18 +258,18 @@ func do_request_animation():
 	if state == DEAD:
 		return
 	$Sprite.play(str(age) + "Request")
-	$Patience.rect_position.y = REQUEST_BOX_HEIGHT[age]
+	patience_bar.rect_position.y = REQUEST_BOX_HEIGHT[age]
 	
 func do_walk_animation():
 	if state == DEAD:
 		return
 	$Sprite.play(str(age) + "Walk")
-	$Patience.rect_position.y = REQUEST_BOX_HEIGHT[age]
+	patience_bar.rect_position.y = REQUEST_BOX_HEIGHT[age]
 
 func remove_request():
 	current_request = NONE
 	request_icon.hide()
-	$Patience.hide()
+	patience_bar.hide()
 	
 	$StartRequest.stop()
 

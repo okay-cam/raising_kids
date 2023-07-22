@@ -6,6 +6,10 @@ export var PauseGameScene : PackedScene
 
 var pause_state := false
 
+var loss := false
+
+var win := false
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		pause_state = !pause_state
@@ -18,6 +22,7 @@ func update_pause_screen():
 	else:
 		get_tree().paused = false
 		visible = false
+
 
 func _on_Resume_buton_button_up():
 	pause_state = false
