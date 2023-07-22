@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/music/nursery_gameplay_loop.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/environment/floore.png" type="Texture" id=9]
 [ext_resource path="res://src/Couch.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Tea_table.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D" groups=["Reset"]]
 position = Vector2( 0, 1 )
@@ -23,7 +24,10 @@ z_index = 1
 z_as_relative = false
 
 [node name="Couch" parent="YSort" instance=ExtResource( 10 )]
-position = Vector2( 127, -77 )
+position = Vector2( 224, 95 )
+
+[node name="Table" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 220, 279 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
 position = Vector2( -205, 54 )
