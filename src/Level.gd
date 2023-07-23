@@ -31,7 +31,7 @@ func _ready():
 func start():
 	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
 
-func _process(delta):
+func _process(_delta):
 	print_debug(successful_children)
 
 func _on_ChildSpawnTimer_timeout():

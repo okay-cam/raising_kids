@@ -10,7 +10,7 @@ var upper_limit_x = 640
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pass
 	
 #	var mouse_offset = (get_viewport().get_mouse_position() - get_viewport().size/2) / 2.5
