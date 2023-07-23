@@ -44,7 +44,7 @@ enum {
 # time between requests
 const CHILL_TIME := 4.5
 # time to complete request
-const SERVE_TIME := 30.0
+const SERVE_TIME := 35.0
 
 # number of requests until aging (except adult)
 const TOTAL_REQUESTS := 2
@@ -54,7 +54,7 @@ var current_request := NONE
 # number of completed requests for current age
 var completed_requests := 0
 
-const REQUEST_BOX_HEIGHT = [0, -55, -66, -120, -150]
+const REQUEST_BOX_HEIGHT = [0, -72, -89, -160, -200]
 
 # MOVEMENT
 # direction of movement
@@ -72,12 +72,12 @@ enum {
 
 # normal speed (other items might be hit speed, zoomies speed, etc)
 const BABY_SPEED = [0.0]
-const KID_SPEED = [4.0]
-const TEEN_SPEED = [6.0]
-const ADULT_SPEED = [7.0]
+const KID_SPEED = [4.5]
+const TEEN_SPEED = [7.5]
+const ADULT_SPEED = [9.0]
 
 # speed when hit
-const HIT_SPEED := 25.0
+const HIT_SPEED := 30.0
 # go to fast speed after eating an item (just kids)
 const ZOOMIES_SPEED := 8.0
 const LERP_SPEED := 0.05
@@ -137,6 +137,7 @@ func _physics_process(delta):
 		
 		# go from green to red over time
 		patience_bar.tint_progress.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
+		patience_bar.tint_under.h = clamp(range_lerp(value, 0, 100, 0 - 0.1, 1/3.0 + 0.1), 0, 1/3.0)
 		
 		# DIE
 		if value <= 0:
@@ -145,6 +146,7 @@ func _physics_process(delta):
 			emit_signal("dead")
 			remove_request()
 			refresh_normal_speed()
+			set_collision_layer_bit(1, true)
 		
 #		print("val")
 #		print(value)
@@ -175,6 +177,10 @@ func _on_ZoomiesCooldown_timeout():
 
 # TAKING ITEMS
 func _on_ItemArea_body_entered(body):
+	
+	if state == DEAD:
+		return
+	
 	var item = body.item
 	
 	# HOLDS CORRECT ITEM

@@ -22,7 +22,7 @@ func _on_SpawnChild_timeout():
 	
 	child.position = position + spawn_offset
 	
-	var level = get_parent()
+	var level = get_parent().get_parent()
 	
 	# connect signal
 	child.connect("success", level, "child_success")

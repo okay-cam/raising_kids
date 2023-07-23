@@ -33,6 +33,7 @@ func _on_Quit_buton_button_up():
 	get_tree().quit()
 
 func _on_Menu_buton_button_up():
+	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(MainMenu)
 

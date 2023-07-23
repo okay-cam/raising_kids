@@ -23,9 +23,9 @@ func activate():
 		$Control/VBox/Alive.text = "You successfully raised {0} children!".format([alive_stats])
 	
 	if dead_stats == 1:
-		$Control/VBox/Alive.text = "You are responsible for the death of 1 child."
+		$Control/VBox/Dead.text = "You are responsible for the death of 1 child."
 	else:
-		$Control/VBox/Alive.text = "You are responsible for the death of {0} children.".format([dead_stats])
+		$Control/VBox/Dead.text = "You are responsible for the death of {0} children.".format([dead_stats])
 	
 	match dead_stats:
 		0:
@@ -50,6 +50,7 @@ func _on_Quit_buton_button_up():
 	get_tree().quit()
 
 func _on_Menu_buton_button_up():
+	get_tree().paused = false
 # warning-ignore:return_value_discarded
 	get_tree().change_scene(MainMenu)
 
