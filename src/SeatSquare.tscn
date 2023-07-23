@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/shadows/shadow_box.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 178, 67 )
+extents = Vector2( 178, 50 )
 
 [node name="SeatSquare" type="StaticBody2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -13,15 +13,16 @@ collision_layer = 64
 collision_mask = 17
 
 [node name="ShadowBox" type="Sprite" parent="."]
-position = Vector2( 2, -85 )
-scale = Vector2( 1.96891, 0.880829 )
+position = Vector2( -2.99999, -67 )
+scale = Vector2( 2.1658, 0.694301 )
 z_index = -1
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1.5, -142 )
+position = Vector2( 0, -118 )
+scale = Vector2( 0.927948, 0.83935 )
 texture = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -89 )
+position = Vector2( -2, -72 )
 shape = SubResource( 1 )

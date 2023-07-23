@@ -22,10 +22,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -544.0
-margin_top = -116.0
-margin_right = -344.0
-margin_bottom = -56.0
+margin_left = -428.0
+margin_top = -118.0
+margin_right = -228.0
+margin_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 200, 60 )
@@ -38,6 +38,7 @@ __meta__ = {
 }
 
 [node name="Quit_buton" type="Button" parent="Control"]
+visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0

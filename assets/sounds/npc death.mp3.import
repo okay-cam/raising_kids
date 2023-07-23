@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/npc death.mp3-477445e644e791f08522f2deb71e910d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/npc death.mp3"
+dest_files=[ "res://.import/npc death.mp3-477445e644e791f08522f2deb71e910d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

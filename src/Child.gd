@@ -94,6 +94,8 @@ func init():
 	direction = Vector2.DOWN.rotated( rand_range( -PI * 0.2, PI * 0.2 ) )
 	speed = HIT_SPEED
 	speed_goal = 0
+	
+	$Smoke.hide()
 
 # MOVEMENT
 func refresh_normal_speed():
@@ -217,7 +219,9 @@ func _on_ItemArea_body_entered(body):
 			
 			# increase age after all requests
 			if completed_requests >= TOTAL_REQUESTS:
-				increase_age()
+#				increase_age()
+				$Smoke.show()
+				$Smoke.play("smoke up")
 			
 			do_character_animation()
 	
@@ -329,3 +333,21 @@ func stop_cry():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade":
 		emit_signal("success")
+
+
+func _on_Smoke_frame_changed():
+	
+	if state == DEAD:
+		return
+	
+	print($Smoke.frame)
+	if $Smoke.frame == 4:
+		increase_age()
+		do_character_animation()
+	if $Smoke.frame == 8:
+		$Smoke.hide()
+		$Smoke.stop()
+		$Smoke.frame = 0
+
+
+

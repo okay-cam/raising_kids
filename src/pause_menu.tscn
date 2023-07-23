@@ -34,9 +34,9 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="Paused" type="Label" parent="Control/VBox"]
-margin_top = 82.0
+margin_top = 122.0
 margin_right = 400.0
-margin_bottom = 198.0
+margin_bottom = 238.0
 theme = ExtResource( 2 )
 text = "Paused"
 align = 1
@@ -44,9 +44,9 @@ valign = 1
 
 [node name="Resume_buton" type="Button" parent="Control/VBox"]
 margin_left = 75.0
-margin_top = 218.0
+margin_top = 258.0
 margin_right = 325.0
-margin_bottom = 278.0
+margin_bottom = 318.0
 rect_min_size = Vector2( 250, 60 )
 size_flags_horizontal = 4
 theme = SubResource( 1 )
@@ -57,9 +57,9 @@ __meta__ = {
 
 [node name="Restart_button" type="Button" parent="Control/VBox"]
 margin_left = 75.0
-margin_top = 298.0
+margin_top = 338.0
 margin_right = 325.0
-margin_bottom = 358.0
+margin_bottom = 398.0
 rect_min_size = Vector2( 250, 60 )
 size_flags_horizontal = 4
 text = "Restart"
@@ -82,9 +82,9 @@ __meta__ = {
 
 [node name="Menu_buton" type="Button" parent="Control/VBox"]
 margin_left = 75.0
-margin_top = 378.0
+margin_top = 418.0
 margin_right = 325.0
-margin_bottom = 438.0
+margin_bottom = 478.0
 rect_min_size = Vector2( 250, 60 )
 size_flags_horizontal = 4
 text = "Main Menu"
@@ -93,6 +93,7 @@ __meta__ = {
 }
 
 [node name="Quit_buton" type="Button" parent="Control/VBox"]
+visible = false
 margin_left = 75.0
 margin_top = 458.0
 margin_right = 325.0

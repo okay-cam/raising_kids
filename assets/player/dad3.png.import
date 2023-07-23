@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/saddad walk 3.png-232a42958492be2f06b7a91ffe1b9c48.stex"
+path="res://.import/dad3.png-75321e797bcd762c91cdf03a2897b5ab.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/saddad walk 3.png"
-dest_files=[ "res://.import/saddad walk 3.png-232a42958492be2f06b7a91ffe1b9c48.stex" ]
+source_file="res://assets/player/dad3.png"
+dest_files=[ "res://.import/dad3.png-75321e797bcd762c91cdf03a2897b5ab.stex" ]
 
 [params]
 

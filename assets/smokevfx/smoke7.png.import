@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/saddad walk 1.png-76ce905249fc3833c93b41e5d20c6284.stex"
+path="res://.import/smoke7.png-69a838a577bc2aa2aed4e4c36bc57f92.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/saddad walk 1.png"
-dest_files=[ "res://.import/saddad walk 1.png-76ce905249fc3833c93b41e5d20c6284.stex" ]
+source_file="res://assets/smokevfx/smoke7.png"
+dest_files=[ "res://.import/smoke7.png-69a838a577bc2aa2aed4e4c36bc57f92.stex" ]
 
 [params]
 

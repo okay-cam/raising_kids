@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://src/CameraControl.gd" type="Script" id=6]
 [ext_resource path="res://src/Level.gd" type="Script" id=7]
 [ext_resource path="res://assets/music/nursery_gameplay_loop.wav" type="AudioStream" id=8]
-[ext_resource path="res://assets/environment/floore.png" type="Texture" id=9]
+[ext_resource path="res://assets/environment/floore_lineless.png" type="Texture" id=9]
 [ext_resource path="res://src/Couch.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/items/keyes_racc.png" type="Texture" id=11]
 [ext_resource path="res://assets/items/wa'uh_coo'lah.png" type="Texture" id=12]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/sounds/equip/toy pickup.mp3" type="AudioStream" id=26]
 [ext_resource path="res://assets/sounds/equip/beans pickup.wav" type="AudioStream" id=27]
 [ext_resource path="res://assets/sounds/equip/key pickup.mp3" type="AudioStream" id=28]
+[ext_resource path="res://src/SeatRound.tscn" type="PackedScene" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 51, 26 )
@@ -167,7 +168,7 @@ stream = ExtResource( 27 )
 
 [node name="Keys3" parent="YSort" instance=ExtResource( 2 )]
 pause_mode = 1
-position = Vector2( -402, -417 )
+position = Vector2( -313, -417 )
 item = 3
 
 [node name="Sprite" type="Sprite" parent="YSort/Keys3"]
@@ -198,6 +199,9 @@ texture = ExtResource( 22 )
 
 [node name="Pickup" type="AudioStreamPlayer" parent="YSort/Keys3"]
 stream = ExtResource( 28 )
+
+[node name="SeatRound1" parent="YSort" instance=ExtResource( 29 )]
+position = Vector2( -314, 341 )
 
 [node name="Toy4" parent="YSort" instance=ExtResource( 2 )]
 pause_mode = 1
@@ -251,11 +255,11 @@ position = Vector2( 125, 75 )
 
 [node name="SeatSquare" parent="YSort" instance=ExtResource( 21 )]
 pause_mode = 1
-position = Vector2( 76, 429 )
+position = Vector2( 131, 248 )
 
 [node name="SeatSquare2" parent="YSort" instance=ExtResource( 21 )]
 pause_mode = 1
-position = Vector2( -495, 427 )
+position = Vector2( -483, -307 )
 
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
 pause_mode = 1

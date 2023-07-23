@@ -33,18 +33,18 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="GameOver" type="Label" parent="Control/VBox"]
-margin_top = 89.0
+margin_top = 129.0
 margin_right = 1280.0
-margin_bottom = 205.0
+margin_bottom = 245.0
 theme = ExtResource( 2 )
 text = "Game Over"
 align = 1
 valign = 1
 
 [node name="Alive" type="Label" parent="Control/VBox"]
-margin_top = 225.0
+margin_top = 265.0
 margin_right = 1280.0
-margin_bottom = 259.0
+margin_bottom = 299.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You successfully raised _ children!"
@@ -52,9 +52,9 @@ align = 1
 valign = 1
 
 [node name="Dead" type="Label" parent="Control/VBox"]
-margin_top = 279.0
+margin_top = 319.0
 margin_right = 1280.0
-margin_bottom = 313.0
+margin_bottom = 353.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You are responsible for the death of _ children."
@@ -62,9 +62,9 @@ align = 1
 valign = 1
 
 [node name="Custom" type="Label" parent="Control/VBox"]
-margin_top = 333.0
+margin_top = 373.0
 margin_right = 1280.0
-margin_bottom = 367.0
+margin_bottom = 407.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You must be an experienced parent! Or you just hid the bodies really well!"
@@ -73,15 +73,15 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/VBox"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 387.0
+margin_top = 427.0
 margin_right = 1280.0
-margin_bottom = 391.0
+margin_bottom = 431.0
 
 [node name="Restart_button" type="Button" parent="Control/VBox"]
 margin_left = 500.0
-margin_top = 411.0
+margin_top = 451.0
 margin_right = 780.0
-margin_bottom = 471.0
+margin_bottom = 511.0
 rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Restart"
@@ -104,9 +104,9 @@ __meta__ = {
 
 [node name="Menu_buton" type="Button" parent="Control/VBox"]
 margin_left = 500.0
-margin_top = 491.0
+margin_top = 531.0
 margin_right = 780.0
-margin_bottom = 551.0
+margin_bottom = 591.0
 rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Main menu"
@@ -115,6 +115,7 @@ __meta__ = {
 }
 
 [node name="Quit_buton" type="Button" parent="Control/VBox"]
+visible = false
 margin_left = 500.0
 margin_top = 571.0
 margin_right = 780.0
