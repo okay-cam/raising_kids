@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/fonts/Lato-Bold.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="DynamicFont" id=1]
-size = 32
+size = 28
 use_filter = true
 font_data = ExtResource( 3 )
 
@@ -32,18 +32,18 @@ custom_constants/separation = 20
 alignment = 1
 
 [node name="GameOver" type="Label" parent="Control/VBox"]
-margin_top = 111.0
+margin_top = 89.0
 margin_right = 1280.0
-margin_bottom = 227.0
+margin_bottom = 205.0
 theme = ExtResource( 2 )
 text = "Game Over"
 align = 1
 valign = 1
 
 [node name="Alive" type="Label" parent="Control/VBox"]
-margin_top = 247.0
+margin_top = 225.0
 margin_right = 1280.0
-margin_bottom = 286.0
+margin_bottom = 259.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You successfully raised _ children!"
@@ -51,9 +51,9 @@ align = 1
 valign = 1
 
 [node name="Dead" type="Label" parent="Control/VBox"]
-margin_top = 306.0
+margin_top = 279.0
 margin_right = 1280.0
-margin_bottom = 345.0
+margin_bottom = 313.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You are responsible for the death of _ children."
@@ -61,9 +61,9 @@ align = 1
 valign = 1
 
 [node name="Custom" type="Label" parent="Control/VBox"]
-margin_top = 365.0
+margin_top = 333.0
 margin_right = 1280.0
-margin_bottom = 404.0
+margin_bottom = 367.0
 theme = ExtResource( 2 )
 custom_fonts/font = SubResource( 1 )
 text = "You must be an experienced parent! Or you just hid the bodies really well!"
@@ -72,16 +72,16 @@ valign = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/VBox"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 424.0
+margin_top = 387.0
 margin_right = 1280.0
-margin_bottom = 428.0
+margin_bottom = 391.0
 
 [node name="Restart_button" type="Button" parent="Control/VBox"]
-margin_left = 515.0
-margin_top = 448.0
-margin_right = 765.0
-margin_bottom = 488.0
-rect_min_size = Vector2( 250, 40 )
+margin_left = 500.0
+margin_top = 411.0
+margin_right = 780.0
+margin_bottom = 471.0
+rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Restart"
 __meta__ = {
@@ -94,7 +94,7 @@ margin_left = 75.0
 margin_top = 299.0
 margin_right = 325.0
 margin_bottom = 339.0
-rect_min_size = Vector2( 250, 40 )
+rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Option"
 __meta__ = {
@@ -102,11 +102,11 @@ __meta__ = {
 }
 
 [node name="Menu_buton" type="Button" parent="Control/VBox"]
-margin_left = 515.0
-margin_top = 508.0
-margin_right = 765.0
-margin_bottom = 548.0
-rect_min_size = Vector2( 250, 40 )
+margin_left = 500.0
+margin_top = 491.0
+margin_right = 780.0
+margin_bottom = 551.0
+rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Main menu"
 __meta__ = {
@@ -114,11 +114,11 @@ __meta__ = {
 }
 
 [node name="Quit_buton" type="Button" parent="Control/VBox"]
-margin_left = 515.0
-margin_top = 568.0
-margin_right = 765.0
-margin_bottom = 608.0
-rect_min_size = Vector2( 250, 40 )
+margin_left = 500.0
+margin_top = 571.0
+margin_right = 780.0
+margin_bottom = 631.0
+rect_min_size = Vector2( 280, 60 )
 size_flags_horizontal = 4
 text = "Quit"
 __meta__ = {

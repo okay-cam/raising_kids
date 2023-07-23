@@ -24,7 +24,8 @@ var age := BABY
 enum {
 	DEAD = 0,
 	WALK,
-	REQUEST
+	REQUEST,
+	LEAVE
 }
 var state := WALK
 
@@ -156,7 +157,7 @@ func _physics_process(delta):
 
 func get_speed(type):
 	
-	if state == DEAD:
+	if state == DEAD or state == LEAVE:
 		return 0
 	
 	match age:
@@ -178,7 +179,7 @@ func _on_ZoomiesCooldown_timeout():
 # TAKING ITEMS
 func _on_ItemArea_body_entered(body):
 	
-	if state == DEAD:
+	if state == DEAD or state == LEAVE:
 		return
 	
 	var item = body.item
@@ -192,8 +193,12 @@ func _on_ItemArea_body_entered(body):
 		# remove adult when given keys
 		if age == ADULT:
 			# !! fade away later to leave
-			emit_signal("success")
-			queue_free()
+			set_collision_layer_bit(1, true)
+			state = LEAVE
+			remove_request()
+			refresh_normal_speed()
+			$Sprite.play("Peace")
+			$AnimationPlayer.play("fade")
 		
 		if age != ADULT:
 			# start new request
@@ -272,7 +277,7 @@ func generate_request():
 
 func do_character_animation():
 	# dont animate if dead
-	if state == DEAD:
+	if state == DEAD or state == LEAVE:
 		return
 	# cry animation if baby
 	if age == BABY and state == REQUEST:
@@ -292,3 +297,6 @@ func remove_request():
 func _on_StartRequest_timeout():
 	generate_request()
 
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "fade":
+		emit_signal("success")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://src/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/ItemBox.tscn" type="PackedScene" id=2]
@@ -20,33 +20,66 @@
 [ext_resource path="res://src/Tea_table.tscn" type="PackedScene" id=18]
 [ext_resource path="res://assets/items/frodge.png" type="Texture" id=19]
 [ext_resource path="res://assets/items/toychest.png" type="Texture" id=20]
+[ext_resource path="res://src/SeatSquare.tscn" type="PackedScene" id=21]
+[ext_resource path="res://assets/shadows/shadow_box.png" type="Texture" id=22]
+[ext_resource path="res://assets/shadows/shadow_circle.png" type="Texture" id=23]
+[ext_resource path="res://src/HelpScreen.tscn" type="PackedScene" id=24]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 29, 49.75 )
+extents = Vector2( 36.5, 26 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 44.5, 36.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 46.5, 39.5 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 29, 46 )
 
 [node name="Level" type="Node2D" groups=["Reset"]]
+pause_mode = 2
 position = Vector2( 0, 1 )
 z_as_relative = false
 script = ExtResource( 7 )
 
+[node name="HelpScreen" parent="." instance=ExtResource( 24 )]
+pause_mode = 2
+visible = false
+
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+visible = false
 
 [node name="EndScreen" parent="." instance=ExtResource( 13 )]
+visible = false
 
 [node name="YSort" type="YSort" parent="."]
+pause_mode = 1
 z_as_relative = false
 
 [node name="ChildSpawner" parent="YSort" instance=ExtResource( 4 )]
+pause_mode = 1
 position = Vector2( -133, -445 )
 z_index = -3
 
+[node name="ShadowBox" type="Sprite" parent="YSort/ChildSpawner"]
+pause_mode = 1
+self_modulate = Color( 1, 1, 1, 0.701961 )
+position = Vector2( 1.99998, 82.364 )
+scale = Vector2( 0.849741, 0.207074 )
+z_index = -1
+texture = ExtResource( 22 )
+
 [node name="Couch" parent="YSort" instance=ExtResource( 10 )]
+pause_mode = 1
 position = Vector2( 127, -121 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
+pause_mode = 1
 position = Vector2( -205, 54 )
 
 [node name="Camera2D" type="Camera2D" parent="YSort/Player"]
+pause_mode = 1
 current = true
 zoom = Vector2( 0.8, 0.8 )
 limit_left = -640
@@ -56,114 +89,184 @@ limit_bottom = 480
 script = ExtResource( 6 )
 
 [node name="Water1" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( -441, 317 )
+pause_mode = 1
+position = Vector2( -500, 232 )
 __meta__ = {
 "_edit_group_": true
 }
 item = 1
 
 [node name="Sprite" type="Sprite" parent="YSort/Water1"]
+pause_mode = 1
 position = Vector2( 0, -91 )
 scale = Vector2( 0.5, 0.5 )
 z_as_relative = false
 texture = ExtResource( 12 )
 
 [node name="HoverSprite" type="Sprite" parent="YSort/Water1"]
+pause_mode = 1
 position = Vector2( 0, -210 )
 scale = Vector2( 0.15, 0.15 )
 z_index = 1
 texture = ExtResource( 14 )
 
 [node name="Collision" type="CollisionShape2D" parent="YSort/Water1"]
-position = Vector2( 0, -38 )
+pause_mode = 1
+position = Vector2( -0.5, -26 )
 z_index = 5
 shape = SubResource( 1 )
 
-[node name="ItemBox2" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 518, -256 )
+[node name="ShadowBox" type="Sprite" parent="YSort/Water1"]
+pause_mode = 1
+position = Vector2( -2, -23.5 )
+scale = Vector2( 0.487047, 0.305699 )
+z_index = -1
+texture = ExtResource( 22 )
+
+[node name="GetWater" type="AudioStreamPlayer" parent="YSort/Water1"]
+
+[node name="Food2" parent="YSort" instance=ExtResource( 2 )]
+pause_mode = 1
+position = Vector2( 524, -153 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="YSort/ItemBox2"]
+[node name="Sprite" type="Sprite" parent="YSort/Food2"]
+pause_mode = 1
 position = Vector2( 0, -106 )
 scale = Vector2( 0.4, 0.37 )
 texture = ExtResource( 19 )
 
-[node name="HoverSprite" type="Sprite" parent="YSort/ItemBox2"]
+[node name="HoverSprite" type="Sprite" parent="YSort/Food2"]
+pause_mode = 1
 position = Vector2( 0, -212 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 17 )
 
-[node name="Collision" type="CollisionShape2D" parent="YSort/ItemBox2"]
-position = Vector2( 0, -38 )
+[node name="Collision" type="CollisionShape2D" parent="YSort/Food2"]
+pause_mode = 1
+position = Vector2( 1.5, -35.5 )
 z_index = 5
-shape = SubResource( 1 )
+shape = SubResource( 2 )
+
+[node name="ShadowBox" type="Sprite" parent="YSort/Food2"]
+pause_mode = 1
+position = Vector2( -1, -32 )
+scale = Vector2( 0.601036, 0.487047 )
+z_index = -1
+texture = ExtResource( 22 )
+
+[node name="GetFood" type="AudioStreamPlayer" parent="YSort/Food2"]
 
 [node name="Keys3" parent="YSort" instance=ExtResource( 2 )]
+pause_mode = 1
 position = Vector2( -295, -381 )
 item = 3
 
 [node name="Sprite" type="Sprite" parent="YSort/Keys3"]
+pause_mode = 1
 position = Vector2( 2.25, -35 )
 scale = Vector2( 0.5, 0.4 )
 texture = ExtResource( 11 )
 
 [node name="HoverSprite" type="Sprite" parent="YSort/Keys3"]
+pause_mode = 1
 position = Vector2( 2.25, -95 )
 scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 15 )
 
 [node name="Collision" type="CollisionShape2D" parent="YSort/Keys3"]
-position = Vector2( 0, -38 )
+pause_mode = 1
+position = Vector2( -1.5, -32.5 )
 z_index = 5
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
-[node name="ItemBox4" parent="YSort" instance=ExtResource( 2 )]
+[node name="ShadowBox" type="Sprite" parent="YSort/Keys3"]
+pause_mode = 1
+self_modulate = Color( 1, 1, 1, 0.701961 )
+position = Vector2( -2.5, 15.3445 )
+scale = Vector2( 0.544042, 0.0986617 )
+z_index = -1
+texture = ExtResource( 22 )
+
+[node name="GetKey" type="AudioStreamPlayer" parent="YSort/Keys3"]
+
+[node name="Toy4" parent="YSort" instance=ExtResource( 2 )]
+pause_mode = 1
 position = Vector2( 500, 368 )
 __meta__ = {
 "_edit_group_": true
 }
 item = 4
 
-[node name="HoverSprite" type="Sprite" parent="YSort/ItemBox4"]
+[node name="HoverSprite" type="Sprite" parent="YSort/Toy4"]
+pause_mode = 1
 position = Vector2( 0, -124 )
 scale = Vector2( 0.15, 0.15 )
 z_index = 1
 texture = ExtResource( 16 )
 
-[node name="Sprite" type="Sprite" parent="YSort/ItemBox4"]
+[node name="Sprite" type="Sprite" parent="YSort/Toy4"]
+pause_mode = 1
 position = Vector2( 10, -52.9999 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 20 )
 
-[node name="Collision" type="CollisionShape2D" parent="YSort/ItemBox4"]
-position = Vector2( -2, -25.75 )
+[node name="Collision" type="CollisionShape2D" parent="YSort/Toy4"]
+pause_mode = 1
+position = Vector2( -2, -20 )
 z_index = 5
-shape = SubResource( 1 )
+shape = SubResource( 4 )
+
+[node name="ShadowBox" type="Sprite" parent="YSort/Toy4"]
+pause_mode = 1
+position = Vector2( 1.50002, -20 )
+scale = Vector2( 0.440414, 0.590674 )
+z_index = -1
+texture = ExtResource( 22 )
+
+[node name="ShadowBox2" type="Sprite" parent="YSort/Toy4"]
+pause_mode = 1
+self_modulate = Color( 1, 1, 1, 0.388235 )
+position = Vector2( -13, 29 )
+scale = Vector2( 0.279793, 0.181347 )
+z_index = -1
+texture = ExtResource( 23 )
+
+[node name="GetToy" type="AudioStreamPlayer" parent="YSort/Toy4"]
 
 [node name="Tea_table" parent="YSort" instance=ExtResource( 18 )]
+pause_mode = 1
 position = Vector2( 125, 75 )
 
+[node name="SeatSquare" parent="YSort" instance=ExtResource( 21 )]
+pause_mode = 1
+position = Vector2( -68, 402 )
+
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
 position = Vector2( 0, 531 )
 z_index = -99
 z_as_relative = false
 polygon = PoolVector2Array( -800, -100, 800, -100, 800, 100, -800, 100 )
 
 [node name="Wall3" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
 position = Vector2( -690, 0 )
 z_index = -99
 z_as_relative = false
 polygon = PoolVector2Array( -100, -1000, 100, -1000, 100, 1000, -100, 1000 )
 
 [node name="Wall4" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
 position = Vector2( 690, 0 )
 z_index = -99
 z_as_relative = false
 polygon = PoolVector2Array( -100, -1000, 100, -1000, 100, 1000, -100, 1000 )
 
 [node name="Wall" parent="." instance=ExtResource( 3 )]
+pause_mode = 1
 position = Vector2( 0, -476 )
 z_index = -99
 z_as_relative = false
@@ -171,16 +274,19 @@ color = Color( 0.815686, 0.756863, 0.756863, 1 )
 polygon = PoolVector2Array( -800, -200, 401, -208, 800, -200, 800, 100, 200, 99, -800, 100 )
 
 [node name="ChildSpawnTimer" type="Timer" parent="."]
+pause_mode = 1
 wait_time = 16.0
 one_shot = true
 autostart = true
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
 stream = ExtResource( 8 )
 volume_db = -5.0
 autoplay = true
 
 [node name="Floor" type="Sprite" parent="."]
+pause_mode = 1
 scale = Vector2( 0.8, 0.8 )
 z_index = -20
 z_as_relative = false

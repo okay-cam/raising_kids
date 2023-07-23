@@ -5,7 +5,7 @@ const CHILD_GOAL = 5
 const LIVES = 3
 
 const INITIAL_CHILD_SPAWN_TIME := 1.5
-const CHILD_SPAWN_TIME := 25
+const CHILD_SPAWN_TIME := 26
 
 var successful_children = 0
 var dead_children = 0
@@ -15,24 +15,21 @@ var spawned_children = 0
 onready var child_spawner = $YSort/ChildSpawner
 
 enum SCREEN {
-	HELP
+	HELP,
 	GAMEPLAY,
 	PAUSE,
 	END
 }
 
-var screen = SCREEN.GAMEPLAY
+var screen = SCREEN.HELP
 
 
 func _ready():
 	randomize()
-	start()
+	get_tree().paused = true
 
 func start():
 	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
-
-func _process(_delta):
-	print_debug(successful_children)
 
 func _on_ChildSpawnTimer_timeout():
 	
@@ -65,3 +62,8 @@ func _input(event):
 		$PauseMenu.toggle_pause()
 	if event.is_action_pressed("restart"):
 		get_tree().paused = false
+	if event.is_action_pressed("pickup") and screen == SCREEN.HELP:
+		$HelpScreen.hide()
+		get_tree().paused = false
+		screen = SCREEN.GAMEPLAY
+		start()
