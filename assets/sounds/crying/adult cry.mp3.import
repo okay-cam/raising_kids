@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/adult cry.mp3-5cf0f38d1e4f3787befbd325a478d3f6.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/crying/adult cry.mp3"
+dest_files=[ "res://.import/adult cry.mp3-5cf0f38d1e4f3787befbd325a478d3f6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

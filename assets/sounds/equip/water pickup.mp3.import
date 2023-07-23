@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/water pickup.mp3-1684d8e1898d94178bb5389977980da9.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/equip/water pickup.mp3"
+dest_files=[ "res://.import/water pickup.mp3-1684d8e1898d94178bb5389977980da9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

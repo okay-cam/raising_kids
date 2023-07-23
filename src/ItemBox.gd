@@ -12,3 +12,6 @@ func highlight():
 	modulate = Color(HIGHLIGHT_AMOUNT, HIGHLIGHT_AMOUNT, HIGHLIGHT_AMOUNT)
 func unhighlight():
 	modulate = Color.white
+
+func play_sound():
+	$Pickup.play()

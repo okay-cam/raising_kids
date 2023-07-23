@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/toy pickup.mp3-ae44fa2b557fc91e7bfc173e39e55f45.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/equip/toy pickup.mp3"
+dest_files=[ "res://.import/toy pickup.mp3-ae44fa2b557fc91e7bfc173e39e55f45.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

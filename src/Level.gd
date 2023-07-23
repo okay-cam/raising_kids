@@ -62,6 +62,7 @@ func _input(event):
 		$PauseMenu.toggle_pause()
 	if event.is_action_pressed("restart"):
 		get_tree().paused = false
+		get_tree().reload_current_scene()
 	if event.is_action_pressed("pickup") and screen == SCREEN.HELP:
 		$HelpScreen.hide()
 		get_tree().paused = false

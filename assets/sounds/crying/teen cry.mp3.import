@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/teen cry.mp3-bfc90868bc85aa1cb2c5ef15eea43503.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/crying/teen cry.mp3"
+dest_files=[ "res://.import/teen cry.mp3-bfc90868bc85aa1cb2c5ef15eea43503.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

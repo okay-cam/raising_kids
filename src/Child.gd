@@ -144,10 +144,13 @@ func _physics_process(delta):
 		if value <= 0:
 			state = DEAD
 			$Sprite.animation = "Dead"
+			stop_cry()
+			$Dead.play()
 			emit_signal("dead")
 			remove_request()
 			refresh_normal_speed()
 			set_collision_layer_bit(1, true)
+			
 		
 #		print("val")
 #		print(value)
@@ -186,6 +189,11 @@ func _on_ItemArea_body_entered(body):
 	
 	# HOLDS CORRECT ITEM
 	if item == current_request:
+		
+		# SOUNDS
+		stop_cry()
+		$Satisfied.play()
+		
 		completed_requests += 1
 		patience_bar.value = 100
 		remove_request()
@@ -274,6 +282,9 @@ func generate_request():
 	# change sprite animation to requesting
 	if age == BABY:
 		do_character_animation()
+	
+	# play sound
+	play_cry()
 
 func do_character_animation():
 	# dont animate if dead
@@ -296,6 +307,24 @@ func remove_request():
 
 func _on_StartRequest_timeout():
 	generate_request()
+
+func play_cry():
+	match age:
+		1:
+			$Cry1.play()
+		2:
+			$Cry2.play()
+		3:
+			$Cry3.play()
+		4:
+			$Cry4.play()
+
+func stop_cry():
+	$Cry1.stop()
+	$Cry2.stop()
+	$Cry3.stop()
+	$Cry4.stop()
+
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "fade":

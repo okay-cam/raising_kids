@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
 [ext_resource path="res://src/ItemFrames.tres" type="SpriteFrames" id=2]
@@ -8,6 +8,10 @@
 [ext_resource path="res://assets/player/saddad walk 3.png" type="Texture" id=6]
 [ext_resource path="res://assets/items/gun.png" type="Texture" id=7]
 [ext_resource path="res://assets/shadows/shadow_circle.png" type="Texture" id=8]
+[ext_resource path="res://assets/sounds/shoot/beans shoot.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/shoot/toy shoot.mp3" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/shoot/water shoot.mp3" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/shoot/key shoot.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -74,6 +78,18 @@ position = Vector2( 0, -11 )
 scale = Vector2( 0.3, 0.15 )
 z_index = -1
 texture = ExtResource( 8 )
+
+[node name="ShootFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="ShootToy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="ShootWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="ShootKeys" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
 [connection signal="body_exited" from="PickupArea" to="." method="_on_PickupArea_body_exited"]

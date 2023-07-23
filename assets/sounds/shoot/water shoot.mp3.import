@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/water shoot.mp3-ab3efafe0ffdfa618d0714278cc0706b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/shoot/water shoot.mp3"
+dest_files=[ "res://.import/water shoot.mp3-ab3efafe0ffdfa618d0714278cc0706b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

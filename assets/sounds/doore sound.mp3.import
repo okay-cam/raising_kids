@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/doore sound.mp3-9e3304bfb16592076fc5819bfda8657d.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/doore sound.mp3"
+dest_files=[ "res://.import/doore sound.mp3-9e3304bfb16592076fc5819bfda8657d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

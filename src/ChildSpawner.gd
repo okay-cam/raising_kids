@@ -30,6 +30,8 @@ func _on_SpawnChild_timeout():
 	
 	get_parent().add_child(child)
 	
+	$Door.play()
+	
 	$CloseDoor.start()
 
 

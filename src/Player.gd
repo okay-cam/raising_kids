@@ -7,6 +7,7 @@ var velocity := Vector2.ZERO
 var item_held := 0
 # stores what item can be picked up currently
 var item_in_range := 0
+var body_in_range = null
 
 # initial velocity added to player on shoot
 const BULLET_KNOCKBACK = 600
@@ -30,8 +31,9 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity + knockback_velocity)
 	
 	# HOLD ITEM
-	if Input.is_action_pressed("pickup") and item_in_range != 0:
+	if Input.is_action_pressed("pickup") and item_in_range != 0 and item_held != item_in_range:
 		hold_item(item_in_range)
+		body_in_range.play_sound()
 	
 	# SHOOT ITEM
 	if Input.is_action_just_pressed("click") and item_held != 0:
@@ -122,11 +124,13 @@ func shoot():
 func _on_PickupArea_body_entered(body):
 	if body.is_in_group("ItemBox"):
 		item_in_range = body.item
+		body_in_range = body
 		body.highlight()
 
 func _on_PickupArea_body_exited(body):
 	if body.is_in_group("ItemBox"):
 		item_in_range = 0
+		body_in_range = null
 		body.unhighlight()
 
 

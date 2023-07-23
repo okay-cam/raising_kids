@@ -17,6 +17,8 @@ func _ready():
 
 func activate():
 	
+	$Cheer.play()
+	
 	if alive_stats == 1:
 		$Control/VBox/Alive.text = "You successfully raised 1 child!"
 	else:

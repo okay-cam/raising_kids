@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/item equip 1.mp3-5762e5534322b460c3d177a06fa0d12f.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/equip/item equip 1.mp3"
+dest_files=[ "res://.import/item equip 1.mp3-5762e5534322b460c3d177a06fa0d12f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
