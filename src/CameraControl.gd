@@ -4,6 +4,12 @@ var upper_limit_x = 640
 
 # !! how to code camera to stay within bounds but allow mouse movement
 
+# !! camera position should be difference
+# between player position and mouse
+
+
+
+
 func _physics_process(delta):
 	pass
 	

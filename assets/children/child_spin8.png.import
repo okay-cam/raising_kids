@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shadow_circle.png-3e7e81ed1ab8db649b61c8834ef690c4.stex"
+path="res://.import/child_spin8.png-ff387cbeb62157b7ffad99990b90d443.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dhadhos/shadow_circle.png"
-dest_files=[ "res://.import/shadow_circle.png-3e7e81ed1ab8db649b61c8834ef690c4.stex" ]
+source_file="res://assets/children/child_spin8.png"
+dest_files=[ "res://.import/child_spin8.png-ff387cbeb62157b7ffad99990b90d443.stex" ]
 
 [params]
 

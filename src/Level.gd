@@ -5,12 +5,14 @@ const CHILD_GOAL = 5
 const LIVES = 3
 
 const INITIAL_CHILD_SPAWN_TIME := 1.5
-const CHILD_SPAWN_TIME := 20
+const CHILD_SPAWN_TIME := 25
 
 var successful_children = 0
 var dead_children = 0
 
 var spawned_children = 0
+
+onready var child_spawner = $YSort/ChildSpawner
 
 enum SCREEN {
 	HELP
@@ -30,11 +32,11 @@ func start():
 	$ChildSpawnTimer.start(INITIAL_CHILD_SPAWN_TIME)
 
 func _process(delta):
-	print(successful_children)
+	print_debug(successful_children)
 
 func _on_ChildSpawnTimer_timeout():
 	
-	$ChildSpawner.start()
+	child_spawner.start()
 	spawned_children += 1
 	
 	if spawned_children < CHILD_GOAL:
@@ -61,3 +63,5 @@ func check_game_over():
 func _input(event):
 	if event.is_action_pressed("pause") and (screen == SCREEN.GAMEPLAY or screen == SCREEN.PAUSE):
 		$PauseMenu.toggle_pause()
+	if event.is_action_pressed("restart"):
+		get_tree().paused = false

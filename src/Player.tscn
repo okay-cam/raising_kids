@@ -7,7 +7,7 @@
 [ext_resource path="res://src/Bullet.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/player/saddad walk 3.png" type="Texture" id=6]
 [ext_resource path="res://assets/items/gun.png" type="Texture" id=7]
-[ext_resource path="res://assets/dhadhos/shadow_circle.png" type="Texture" id=8]
+[ext_resource path="res://assets/shadows/shadow_circle.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -26,7 +26,7 @@ animations = [ {
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 67.0
+radius = 80.0062
 
 [node name="Player" type="KinematicBody2D" groups=["Player", "Reset"]]
 collision_mask = 82
@@ -57,7 +57,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="PickupCollision" type="CollisionShape2D" parent="PickupArea"]
-position = Vector2( 0, -9 )
+position = Vector2( 0, -14 )
 shape = SubResource( 2 )
 
 [node name="HoldIcon" type="AnimatedSprite" parent="."]
@@ -73,6 +73,12 @@ position = Vector2( -12, -90 )
 scale = Vector2( 0.13, 0.13 )
 texture = ExtResource( 7 )
 offset = Vector2( -140, 0 )
+
+[node name="Shadow" type="Sprite" parent="."]
+position = Vector2( 0, -11 )
+scale = Vector2( 0.3, 0.15 )
+z_index = -1
+texture = ExtResource( 8 )
 
 [connection signal="body_entered" from="PickupArea" to="." method="_on_PickupArea_body_entered"]
 [connection signal="body_exited" from="PickupArea" to="." method="_on_PickupArea_body_exited"]

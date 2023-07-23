@@ -48,21 +48,30 @@ func _physics_process(_delta):
 		$Sprite.play("Walk")
 	
 	# set direction based on mouse relative to gun
-	var mouse_pos = get_local_mouse_position()-Vector2(0, $Gun.position.y)
-	var right = mouse_pos.x >= 0
+	var gun_pos = get_local_mouse_position()-Vector2(0, $Gun.position.y)
+	var right = gun_pos.x >= 0
 	
 	if right:
 		$Sprite.flip_h = true
 		$Gun.flip_h = true
 		$Gun.offset.x = 140
 		$Gun.position.x = 12
-		$Gun.rotation = (mouse_pos-Vector2($Gun.position.x, 0)).angle()
+		$Gun.rotation = (gun_pos-Vector2($Gun.position.x, 0)).angle()
 	else:
 		$Sprite.flip_h = false
 		$Gun.flip_h = false
 		$Gun.offset.x = -140
 		$Gun.position.x = -12
-		$Gun.rotation = (mouse_pos-Vector2($Gun.position.x, 0)).angle() + PI
+		$Gun.rotation = (gun_pos-Vector2($Gun.position.x, 0)).angle() + PI
+	
+#	# CAMERA
+#	var cam_pos = position
+#	var mouse_pos = get_viewport().get_mouse_position() - get_viewport().size/2
+#
+#	var x_limit_min = -640 + (get_viewport_rect().size.x / 2)
+#	var x_limit_max = 640 - (get_viewport_rect().size.x / 2)
+#
+#	$Camera2D.position = cam_pos + mouse_pos
 	
 
 ## set animation if its not already running
