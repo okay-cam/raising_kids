@@ -145,6 +145,9 @@ shape = SubResource( 1 )
 [node name="Tea_table" parent="YSort" instance=ExtResource( 18 )]
 position = Vector2( 125, 75 )
 
+[node name="Lamp" parent="YSort" instance=ExtResource( 19 )]
+position = Vector2( -492, -89 )
+
 [node name="Wall2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, 531 )
 z_index = -99

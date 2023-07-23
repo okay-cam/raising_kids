@@ -37,6 +37,11 @@ BulletResource = ExtResource( 5 )
 visible = false
 polygon = PoolVector2Array( -28, -64, -1, -81, 28, -64, 9, 0, -9, 0 )
 
+[node name="ShadowCircle" type="Sprite" parent="."]
+position = Vector2( -1, -11.5 )
+scale = Vector2( 0.344186, 0.162037 )
+texture = ExtResource( 8 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -95 )
 scale = Vector2( 0.18, 0.18 )

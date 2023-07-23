@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/dhadhos/shadow_circle.png" type="Texture" id=1]
+[ext_resource path="res://assets/environment/seat_sirsle.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 61.1941
+
+[node name="Lamp" type="StaticBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 64
+collision_mask = 17
+
+[node name="ShadowBox" type="Sprite" parent="."]
+position = Vector2( -0.833332, -84.8165 )
+scale = Vector2( 0.674419, 0.80077 )
+texture = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1.5, -142 )
+texture = ExtResource( 2 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 1.5, -66.1667 )
+shape = SubResource( 1 )
